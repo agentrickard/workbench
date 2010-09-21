@@ -1,0 +1,61 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ *   Workbench Access module file.
+ *
+ * @copyright (C) Copyright 2009 Palantir.net
+ * @license http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function workbench_menu() {
+  $items = array();
+
+  $items['admin/config/workbench'] = array(
+    'title' => 'Workbench',
+    'description' => 'Workbench',
+    'page callback' => 'workbench_admin',
+    'access arguments' => array('administer workbench'),
+    'position' => 'right',
+    'file' => 'workbench.admin.inc',
+  );
+  $items['admin/config/workbench/list'] = array(
+    'title' => 'Workbench',
+    'description' => 'Workbench tools and settings',
+    'page callback' => 'workbench_admin',
+    'access arguments' => array('administer workbench'),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => -20,
+    'file' => 'workbench.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission()
+ */
+function workbench_permission() {
+  $permissions = array(
+    'administer workbench' => array(
+      'title' => t('Administer Workbench settings'),
+    ),
+  );
+  return $permissions;
+}

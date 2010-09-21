@@ -1,0 +1,9 @@
+;$Id$
+name = Workbench
+description = Workbench editorial suite.
+package = Workbench
+core = 7.x
+configure = admin/config/workbench/settings
+files[] = workbench.module
+files[] = workbench.admin.inc
+files[] = workbench.theme.inc

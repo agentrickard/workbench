@@ -5,5 +5,6 @@ package = Workbench
 core = 7.x
 configure = admin/config/workbench/settings
 files[] = workbench.module
-files[] = workbench.admin.inc
+files[] = workbench.page.inc
 files[] = workbench.theme.inc
+files[] = workbench.views.inc

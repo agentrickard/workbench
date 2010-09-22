@@ -31,19 +31,59 @@ function workbench_menu() {
   $items['admin/config/workbench'] = array(
     'title' => 'Workbench',
     'description' => 'Workbench',
-    'page callback' => 'workbench_admin',
-    'access arguments' => array('administer workbench'),
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access workbench'),
     'position' => 'right',
-    'file' => 'workbench.admin.inc',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
   );
-  $items['admin/config/workbench/list'] = array(
+  $items['admin/config/workbench/page'] = array(
     'title' => 'Workbench',
-    'description' => 'Workbench tools and settings',
-    'page callback' => 'workbench_admin',
-    'access arguments' => array('administer workbench'),
-    'type' => MENU_LOCAL_TASK,
+    'description' => 'My Workbench area',
+    'page callback' => 'workbench_create',
+    'access arguments' => array('access workbench'),
     'weight' => -20,
-    'file' => 'workbench.admin.inc',
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/create'] = array(
+    'title' => 'Create',
+    'page callback' => 'workbench_create',
+    'access arguments' => array('access workbench'),
+    'weight' => -20,
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/content'] = array(
+    'title' => 'My content',
+    'page callback' => 'workbench_content',
+    'access arguments' => array('access workbench'),
+    'weight' => -15,
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/review'] = array(
+    'title' => 'For review',
+    'page callback' => 'workbench_review',
+    'access arguments' => array('access workbench'),
+    'weight' => -10,
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/recent'] = array(
+    'title' => 'Recent changes',
+    'page callback' => 'workbench_recent',
+    'access arguments' => array('access workbench'),
+    'weight' => -5,
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/assets'] = array(
+    'title' => 'Asset Library',
+    'page callback' => 'workbench_assets',
+    'access arguments' => array('access workbench'),
+    'weight' => 0,
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
   );
   return $items;
 }
@@ -55,6 +95,9 @@ function workbench_permission() {
   $permissions = array(
     'administer workbench' => array(
       'title' => t('Administer Workbench settings'),
+    ),
+    'access workbench' => array(
+      'title' => t('Access a personal Workbench page'),
     ),
   );
   return $permissions;

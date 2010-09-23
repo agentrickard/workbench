@@ -40,16 +40,16 @@ function workbench_menu() {
   $items['admin/config/workbench/page'] = array(
     'title' => 'Workbench',
     'description' => 'My Workbench area',
-    'page callback' => 'workbench_create',
+    'page callback' => 'workbench_page',
     'access arguments' => array('access workbench'),
     'weight' => -20,
     'file' => 'workbench.pages.inc',
   );
-  $items['admin/config/workbench/page/create'] = array(
-    'title' => 'Create',
-    'page callback' => 'workbench_create',
+  $items['admin/config/workbench/page/overview'] = array(
+    'title' => 'Workbench',
+    'page callback' => 'workbench_page',
     'access arguments' => array('access workbench'),
-    'weight' => -20,
+    'weight' => -25,
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
   );
@@ -57,31 +57,15 @@ function workbench_menu() {
     'title' => 'My content',
     'page callback' => 'workbench_content',
     'access arguments' => array('access workbench'),
+    'weight' => -20,
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'workbench.pages.inc',
+  );
+  $items['admin/config/workbench/page/create'] = array(
+    'title' => 'Create content',
+    'page callback' => 'workbench_create',
+    'access arguments' => array('access workbench'),
     'weight' => -15,
-    'type' => MENU_LOCAL_TASK,
-    'file' => 'workbench.pages.inc',
-  );
-  $items['admin/config/workbench/page/review'] = array(
-    'title' => 'For review',
-    'page callback' => 'workbench_review',
-    'access arguments' => array('access workbench'),
-    'weight' => -10,
-    'type' => MENU_LOCAL_TASK,
-    'file' => 'workbench.pages.inc',
-  );
-  $items['admin/config/workbench/page/recent'] = array(
-    'title' => 'Recent changes',
-    'page callback' => 'workbench_recent',
-    'access arguments' => array('access workbench'),
-    'weight' => -5,
-    'type' => MENU_LOCAL_TASK,
-    'file' => 'workbench.pages.inc',
-  );
-  $items['admin/config/workbench/page/assets'] = array(
-    'title' => 'Asset Library',
-    'page callback' => 'workbench_assets',
-    'access arguments' => array('access workbench'),
-    'weight' => 0,
     'type' => MENU_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
   );

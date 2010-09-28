@@ -1,11 +1,5 @@
 <?php
 
-function workbench_page() {
-  global $user;
-  $output = check_plain($user->name);
-  return $output;
-}
-
 /**
  * Simple page to show list of content type to create.
  */
@@ -31,25 +25,12 @@ function workbench_create() {
   return $output;
 }
 
+/**
+ * Page callback for the workbench content page.
+ */
 function workbench_content() {
-  $output = views_embed_view('workbench_content');
-  return $output;
-}
-
-function workbench_review() {
-  global $user;
-  $output = check_plain($user->name);
-  return $output;
-}
-
-function workbench_recent() {
-  global $user;
-  $output = check_plain($user->name);
-  return $output;
-}
-
-function workbench_assets() {
-  global $user;
-  $output = check_plain($user->name);
+  $output = '';
+  // Allow other modules to add content here.
+  drupal_alter('workbench_content', $output);
   return $output;
 }

@@ -38,13 +38,14 @@ function workbench_menu() {
     'file path' => drupal_get_path('module', 'system'),
   );
   $items['admin/config/workbench/page'] = array(
-    'title' => 'Workbench',
+    'title' => 'My Workbench',
     'description' => 'My Workbench area',
-    'page callback' => 'workbench_page',
+    'page callback' => 'workbench_content',
     'access arguments' => array('access workbench'),
     'weight' => -20,
     'file' => 'workbench.pages.inc',
   );
+  /*
   $items['admin/config/workbench/page/overview'] = array(
     'title' => 'Workbench',
     'page callback' => 'workbench_page',
@@ -52,13 +53,13 @@ function workbench_menu() {
     'weight' => -25,
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
-  );
+  );*/
   $items['admin/config/workbench/page/content'] = array(
     'title' => 'My content',
     'page callback' => 'workbench_content',
     'access arguments' => array('access workbench'),
     'weight' => -20,
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_DEFAULT_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
   );
   $items['admin/config/workbench/page/create'] = array(

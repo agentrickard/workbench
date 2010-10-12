@@ -99,7 +99,7 @@ function workbench_menu_alter(&$items) {
     if (substr_count($key, 'node/%node/') > 0) {
       $args = explode('/', $key);
       $last = array_pop($args);
-      if ($last != 'view') {
+      if ($last != 'view' && !isset($item['theme callback'])) {
         $items[$key]['theme callback'] =  '_node_custom_theme';
       }
     }

@@ -87,21 +87,3 @@ function workbench_permission() {
   );
   return $permissions;
 }
-
-/**
- * Implements hook_menu_alter().
- *
- * Fix for node tab theming.
- * See http://drupal.org/node/934790
- */
-function workbench_menu_alter(&$items) {
-  foreach ($items as $key => $item) {
-    if (substr_count($key, 'node/%node/') > 0) {
-      $args = explode('/', $key);
-      $last = array_pop($args);
-      if ($last != 'view' && !isset($item['theme callback'])) {
-        $items[$key]['theme callback'] =  '_node_custom_theme';
-      }
-    }
-  }
-}

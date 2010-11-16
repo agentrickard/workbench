@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * @file
+ *  Workbench page callbacks.
+ *
+ * @copyright (C) Copyright 2010 Palantir.net
+ */
+
+/**
  * Simple page to show list of content type to create.
  */
 function workbench_create() {

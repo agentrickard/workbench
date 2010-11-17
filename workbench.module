@@ -74,7 +74,7 @@ function workbench_menu() {
 }
 
 /**
- * Implements hook_permission()
+ * Implements hook_permission().
  */
 function workbench_permission() {
   $permissions = array(

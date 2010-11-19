@@ -29,8 +29,8 @@ function workbench_create() {
  * Page callback for the workbench content page.
  */
 function workbench_content() {
-  $output = '';
+  $render = array('#markup' => '');
   // Allow other modules to add content here.
-  drupal_alter('workbench_content', $output);
-  return $output;
+  drupal_alter('workbench_content', $render);
+  return $render;
 }

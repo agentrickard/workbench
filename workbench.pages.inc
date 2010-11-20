@@ -4,24 +4,27 @@
  * Simple page to show list of content type to create.
  */
 function workbench_create() {
-  $output = '<h1>' . t('Create new content') . '</h1>';
-  $allowed = array();
-  $types = node_type_get_types();
-  foreach ($types as $type) {
+  $output = '<h1>' . t('Create content') . '</h1>';
+
+  $items = array();
+  foreach (node_type_get_types() as $type) {
     if (node_hook($type->type, 'form') && node_access('create', $type->type)) {
-      $allowed[$type->type] = $type->name;
+      $items[$type->type] = array(
+        'title' => $type->name,
+        'href' => 'node/add/' . $type->type,
+        'description' => $type->description,
+        'localized_options' => array(),
+      );
     }
   }
-  if (empty($allowed)) {
+
+  if (empty($items)) {
     $output .= t('You cannot create any new content. Please contact the site administrator.');
   }
   else {
-    $items = array();
-    foreach ($allowed as $key => $value) {
-      $items[] = l($value, "node/add/$key");
-    }
-    $output .= theme('item_list', array('items' => $items));
+    $output .= theme('node_add_list', array('content' => $items));
   }
+
   return $output;
 }
 

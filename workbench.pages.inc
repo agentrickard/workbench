@@ -1,11 +1,34 @@
 <?php
 
 /**
+ * Page callback for the workbench content page.
+ */
+function workbench_content() {
+  $render = array('#markup' => '');
+  // Allow other modules to add content here.
+  drupal_alter('workbench_content', $render);
+  return $render;
+}
+
+/**
  * Simple page to show list of content type to create.
  */
 function workbench_create() {
-  $output = '<h1>' . t('Create content') . '</h1>';
+  $render = array('#markup' => '');
+  $render['workbench_create_default'] = _workbench_create();
 
+  // Allow other modules to add content here.
+  drupal_alter('workbench_create', $render);
+  return $render;
+}
+
+/**
+ * Emulate node/add.
+ */
+function _workbench_create() {
+  $render['#markup'] = '<h3>' . t('Create content') . '</h3>';
+
+  // Build an array of links to content type creation forms.
   $items = array();
   foreach (node_type_get_types() as $type) {
     if (node_hook($type->type, 'form') && node_access('create', $type->type)) {
@@ -19,21 +42,12 @@ function workbench_create() {
   }
 
   if (empty($items)) {
-    $output .= t('You cannot create any new content. Please contact the site administrator.');
+    $render['#markup'] .= t('You cannot create any new content. Please contact the site administrator.');
   }
   else {
-    $output .= theme('node_add_list', array('content' => $items));
+    // Theme the arrray of content type creation links using node.module's theme function.
+    $render['#markup'] .= theme('node_add_list', array('content' => $items));
   }
-
-  return $output;
-}
-
-/**
- * Page callback for the workbench content page.
- */
-function workbench_content() {
-  $render = array('#markup' => '');
-  // Allow other modules to add content here.
-  drupal_alter('workbench_content', $render);
   return $render;
 }
+

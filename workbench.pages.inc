@@ -4,7 +4,7 @@
  * Page callback for the workbench content page.
  */
 function workbench_content() {
-  $render = array('#markup' => '');
+  $render = array();
   // Allow other modules to add content here.
   drupal_alter('workbench_content', $render);
   return $render;
@@ -14,7 +14,7 @@ function workbench_content() {
  * Simple page to show list of content type to create.
  */
 function workbench_create() {
-  $render = array('#markup' => '');
+  $render = array();
   $render['workbench_create_default'] = _workbench_create();
 
   // Allow other modules to add content here.
@@ -26,6 +26,7 @@ function workbench_create() {
  * Emulate node/add.
  */
 function _workbench_create() {
+  $render = array();
   $render['#markup'] = '<h3>' . t('Create content') . '</h3>';
 
   // Build an array of links to content type creation forms.

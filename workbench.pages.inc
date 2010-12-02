@@ -36,26 +36,17 @@ function _workbench_create() {
   $render = array();
   $render['#markup'] = '<h3>' . t('Create content') . '</h3>';
 
-  // Build an array of links to content type creation forms.
-  $items = array();
-  foreach (node_type_get_types() as $type) {
-    if (node_hook($type->type, 'form') && node_access('create', $type->type)) {
-      $items[$type->type] = array(
-        'title' => $type->name,
-        'href' => 'node/add/' . $type->type,
-        'description' => $type->description,
-        'localized_options' => array(),
-      );
-    }
-  }
+  $item = menu_get_item('node/add');
+  $content = system_admin_menu_block($item);
 
-  if (empty($items)) {
-    $render['#markup'] .= t('You cannot create any new content. Please contact the site administrator.');
+  if (!empty($content)) {
+    // Theme the arrray of content type creation links using node.module's theme function.
+    $render['#markup'] .= theme('node_add_list', array('content' => $content));
   }
   else {
-    // Theme the arrray of content type creation links using node.module's theme function.
-    $render['#markup'] .= theme('node_add_list', array('content' => $items));
+    $render['#markup'] .= t('You cannot create any new content. Please contact the site administrator.');
   }
+
   return $render;
 }
 

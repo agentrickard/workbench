@@ -70,8 +70,23 @@ function workbench_permission() {
     'access workbench' => array(
       'title' => t('Access a personal Workbench page'),
     ),
+    'view all unpublished content' => array(
+      'title' => 'View all unpublished content',
+    ),
   );
   return $permissions;
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Allow users with the 'view all unpublished content' permission to do just that.
+ */
+function workbench_node_access($node, $op, $account) {
+  if ($op == 'view' && !$node->status && user_access('view all unpublished content', $account)) {
+    return NODE_ACCESS_ALLOW;
+  }
+  return NODE_ACCESS_IGNORE;
 }
 
 /**

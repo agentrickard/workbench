@@ -11,10 +11,30 @@
  * Page callback for the workbench content page.
  */
 function workbench_content() {
-  $render = array();
+  $output = array();
   // Allow other modules to add content here.
-  drupal_alter('workbench_content', $render);
-  return $render;
+  $output['#attributes'] = array('class' => array('admin'));
+  $output['#theme'] = 'workbench_element';
+  $output['workbench_current_user'] = array(
+    '#title' => t('My Profile'),
+    '#markup' => views_embed_view('workbench_current_user'),
+    '#attributes' => array('class' => array('left', 'clearfix')),
+    '#theme' => 'workbench_element',
+  );
+  $output['workbench_edited'] = array(
+    '#title' => t('Content I\'ve Edited'),
+    '#markup' => views_embed_view('workbench_edited', 'block_1'),
+    '#attributes' => array('class' => array('right', 'clearfix')),
+    '#theme' => 'workbench_element',
+  );
+  $output['workbench_recent_content'] = array(
+    '#title' => t('All Recent Content'),
+    '#markup' => views_embed_view('workbench_recent_content', 'block_1'),
+    '#attributes' => array('class' => array('clearfix'), 'style' => array('clear: both;')),
+    '#theme' => 'workbench_element',
+  );
+  drupal_alter('workbench_content', $output);
+  return $output;
 }
 
 /**

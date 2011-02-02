@@ -90,6 +90,51 @@ function workbench_node_access($node, $op, $account) {
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function workbench_views_api() {
+  return array('api' => 2);
+}
+
+/**
+ * Implements hook_views_default_views().
+ */
+function workbench_views_default_views() {
+  return workbench_get_all_exports('views', 'view.inc', 'view');
+}
+
+/**
+ * Fetches an array of exportables from files.
+ *
+ * @param String $directory
+ *   The subdirectory in the custom module.
+ * @param String $extension
+ *   The file extension.
+ * @param String $name
+ *   The name of the variable found in each file. Defaults to the same as
+ *   $extension.
+ * @return
+ *   Array of $name objects.
+ */
+function workbench_get_all_exports($directory, $extension, $name = NULL) {
+  if (!$name) {
+    $name = $extension;
+  }
+
+  $return = array();
+  // Find all the files in the directory with the correct extension.
+  $files = file_scan_directory(drupal_get_path('module', 'workbench') . "/$directory", "/.$extension/");
+  foreach ($files as $path => $file) {
+    require $path;
+    if (isset($$name)) {
+      $return[$$name->name] = $$name;
+    }
+  }
+
+  return $return;
+}
+
+/**
  * Implements hook_theme().
  *
  * Provides a theme function for use with the RenderAPI that uses the #title and #attributes

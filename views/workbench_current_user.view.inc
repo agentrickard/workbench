@@ -1,8 +1,10 @@
 <?php
+// $Id$
+
 $view = new view;
 $view->name = 'workbench_current_user';
-$view->description = '';
-$view->tag = '';
+$view->description = 'Information about the current user.';
+$view->tag = 'Workbench';
 $view->base_table = 'users';
 $view->human_name = '';
 $view->core = 0;
@@ -11,6 +13,7 @@ $view->disabled = FALSE; /* Edit this to true to make a default view disabled in
 
 /* Display: Defaults */
 $handler = $view->new_display('default', 'Defaults', 'default');
+$handler->display->display_options['use_ajax'] = FALSE;
 $handler->display->display_options['access']['type'] = 'perm';
 $handler->display->display_options['access']['perm'] = 'access workbench';
 $handler->display->display_options['cache']['type'] = 'none';

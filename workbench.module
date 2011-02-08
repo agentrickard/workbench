@@ -178,3 +178,35 @@ function theme_workbench_element($vars) {
   $output = "<div{$attributes}>{$title}{$element['#children']}</div>";
   return $output;
 }
+
+/**
+ * Implements hook_page_alter().
+ *
+ * Add a pre-render function to the toolbar so that we can add links to it.
+ */
+function workbench_page_alter(&$page) {
+  if (isset($page['page_top']['toolbar']) && module_exists('workbench') && user_access('access workbench')) {
+    $page['page_top']['toolbar']['#pre_render'][] = 'workbench_toolbar_pre_render';
+  }
+}
+
+/**
+ * Pre-render function for the toolbar, added in hook_page_alter().
+ *
+ * Adds a 'My Workbench' link between the 'Hello Username' and 
+ * 'Log out' links.
+ */
+function workbench_toolbar_pre_render($toolbar) {
+  $links = &$toolbar['toolbar_user']['#links'];
+
+  $logout = $links['logout'];
+  $workbench = array(
+    'title' => t('My Workbench'),
+    'href' => 'admin/config/workbench/page',
+  );
+
+  unset($links['logout']);
+  array_push($links, $workbench, $logout);
+
+  return $toolbar;
+}

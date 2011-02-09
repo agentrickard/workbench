@@ -206,7 +206,8 @@ function workbench_toolbar_pre_render($toolbar) {
   );
 
   unset($links['logout']);
-  array_push($links, $workbench, $logout);
+  $links['workbench'] = $workbench;
+  $links['logout'] = $logout;
 
   return $toolbar;
 }

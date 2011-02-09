@@ -197,17 +197,27 @@ function workbench_page_alter(&$page) {
  * 'Log out' links.
  */
 function workbench_toolbar_pre_render($toolbar) {
-  $links = &$toolbar['toolbar_user']['#links'];
 
-  $logout = $links['logout'];
+  //If the #links array does not exist, create it
+  if (!isset($toolbar['toolbar_user']['#links'])) {
+    $toolbar['toolbar_user']['#links'] = array();
+  }
+
+  $links = &$toolbar['toolbar_user']['#links'];
+  //Create the workbench link
   $workbench = array(
     'title' => t('My Workbench'),
     'href' => 'admin/config/workbench/page',
   );
-
-  unset($links['logout']);
+  //Assign it to the links array
   $links['workbench'] = $workbench;
-  $links['logout'] = $logout;
+
+  //If the logout link exists, unset it and move it to the end of the links array
+  if (isset($links['logout'])) {
+    $logout = $links['logout'];
+    unset($links['logout']);
+    $links['logout'] = $logout;
+  }
 
   return $toolbar;
 }

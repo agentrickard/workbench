@@ -262,7 +262,7 @@ $handler->display->display_options['filters']['status']['expose']['identifier'] 
 
 /* Display: Page */
 $handler = $view->new_display('page', 'Page', 'page_1');
-$handler->display->display_options['path'] = 'admin/config/workbench/page/content/edited';
+$handler->display->display_options['path'] = 'admin/workbench/content/edited';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'Content I\'ve Edited';
 $handler->display->display_options['menu']['weight'] = '1';

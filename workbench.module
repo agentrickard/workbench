@@ -23,7 +23,7 @@ function workbench_menu() {
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),
   );
-  $items['admin/config/workbench/page'] = array(
+  $items['admin/workbench'] = array(
     'title' => 'My Workbench',
     'description' => 'My Workbench area',
     'page callback' => 'workbench_content',
@@ -40,7 +40,7 @@ function workbench_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
   );*/
-  $items['admin/config/workbench/page/content'] = array(
+  $items['admin/workbench/content'] = array(
     'title' => 'My content',
     'page callback' => 'workbench_content',
     'access arguments' => array('access workbench'),
@@ -48,7 +48,7 @@ function workbench_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'file' => 'workbench.pages.inc',
   );
-  $items['admin/config/workbench/page/create'] = array(
+  $items['admin/workbench/create'] = array(
     'title' => 'Create content',
     'page callback' => 'workbench_create',
     'access arguments' => array('access workbench'),
@@ -177,47 +177,4 @@ function theme_workbench_element($vars) {
   // Build simple output.
   $output = "<div{$attributes}>{$title}{$element['#children']}</div>";
   return $output;
-}
-
-/**
- * Implements hook_page_alter().
- *
- * Add a pre-render function to the toolbar so that we can add links to it.
- */
-function workbench_page_alter(&$page) {
-  if (isset($page['page_top']['toolbar']) && module_exists('workbench') && user_access('access workbench')) {
-    $page['page_top']['toolbar']['#pre_render'][] = 'workbench_toolbar_pre_render';
-  }
-}
-
-/**
- * Pre-render function for the toolbar, added in hook_page_alter().
- *
- * Adds a 'My Workbench' link between the 'Hello Username' and 
- * 'Log out' links.
- */
-function workbench_toolbar_pre_render($toolbar) {
-
-  //If the #links array does not exist, create it
-  if (!isset($toolbar['toolbar_user']['#links'])) {
-    $toolbar['toolbar_user']['#links'] = array();
-  }
-
-  $links = &$toolbar['toolbar_user']['#links'];
-  //Create the workbench link
-  $workbench = array(
-    'title' => t('My Workbench'),
-    'href' => 'admin/config/workbench/page',
-  );
-  //Assign it to the links array
-  $links['workbench'] = $workbench;
-
-  //If the logout link exists, unset it and move it to the end of the links array
-  if (isset($links['logout'])) {
-    $logout = $links['logout'];
-    unset($links['logout']);
-    $links['logout'] = $logout;
-  }
-
-  return $toolbar;
 }

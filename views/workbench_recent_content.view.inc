@@ -319,7 +319,7 @@ $handler->display->display_options['fields']['edit_node']['element_default_class
 $handler->display->display_options['fields']['edit_node']['hide_empty'] = 0;
 $handler->display->display_options['fields']['edit_node']['empty_zero'] = 0;
 $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
-$handler->display->display_options['path'] = 'admin/config/workbench/page/content/all';
+$handler->display->display_options['path'] = 'admin/workbench/content/all';
 $handler->display->display_options['menu']['type'] = 'tab';
 $handler->display->display_options['menu']['title'] = 'All Recent Content';
 $handler->display->display_options['menu']['weight'] = '2';

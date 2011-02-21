@@ -28,15 +28,6 @@ function workbench_menu() {
     'weight' => -20,
     'file' => 'workbench.pages.inc',
   );
-  /*
-  $items['admin/config/workbench/page/overview'] = array(
-    'title' => 'Workbench',
-    'page callback' => 'workbench_page',
-    'access arguments' => array('access workbench'),
-    'weight' => -25,
-    'type' => MENU_DEFAULT_LOCAL_TASK,
-    'file' => 'workbench.pages.inc',
-  );*/
   $items['admin/workbench/content'] = array(
     'title' => 'My content',
     'page callback' => 'workbench_content',

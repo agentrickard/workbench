@@ -7,6 +7,14 @@
 
 /**
  * Page callback for the workbench content page.
+ *
+ * Note that we add Views information to the array and render
+ * the Views as part of the alter hook provided here.
+ *
+ * @see hook_workbench_content_alter()
+ * 
+ * @return
+ *  A Render API array of content creation options.
  */
 function workbench_content() {
   $output = array();
@@ -58,34 +66,42 @@ function workbench_content() {
 
 /**
  * Simple page to show list of content type to create.
+ *
+ * @see hook_workbench_create_alter()
+ *
+ * @return
+ *  A Render API array of content creation options.
  */
 function workbench_create() {
-  $render = array();
-  $render['workbench_create_default'] = _workbench_create();
+  $output = array();
+  $output['workbench_create_default'] = _workbench_create();
 
   // Allow other modules to add content here.
-  drupal_alter('workbench_create', $render);
-  return $render;
+  drupal_alter('workbench_create', $output);
+  return $output;
 }
 
 /**
- * Emulate node/add.
+ * Emulate node/add to return content creation list.
+ *
+ * @return
+ *  A Render API array of content creation options.
  */
 function _workbench_create() {
-  $render = array();
-  $render['#markup'] = '<h3>' . t('Create content') . '</h3>';
+  $output = array();
+  $output['#markup'] = '<h3>' . t('Create content') . '</h3>';
 
   $item = menu_get_item('node/add');
   $content = system_admin_menu_block($item);
 
   if (!empty($content)) {
     // Theme the arrray of content type creation links using node.module's theme function.
-    $render['#markup'] .= theme('node_add_list', array('content' => $content));
+    $output['#markup'] .= theme('node_add_list', array('content' => $content));
   }
   else {
-    $render['#markup'] .= t('You cannot create any new content. Please contact the site administrator.');
+    $output['#markup'] .= t('You cannot create any new content. Please contact the site administrator.');
   }
 
-  return $render;
+  return $output;
 }
 

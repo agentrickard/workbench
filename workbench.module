@@ -68,7 +68,7 @@ function workbench_permission() {
 /**
  * Implements hook_node_access().
  *
- * Allow users with the 'view all unpublished content' permission to do just that.
+ * Allows users with the 'view all unpublished content' permission to do so.
  */
 function workbench_node_access($node, $op, $account) {
   if ($op == 'view' && !$node->status && user_access('view all unpublished content', $account)) {
@@ -103,6 +103,7 @@ function workbench_views_default_views() {
  * @param $name
  *   The name of the variable found in each file. Defaults to the same as
  *   $extension.
+ *
  * @return
  *   Array of $name objects.
  */
@@ -127,8 +128,8 @@ function workbench_load_all_exports($module, $directory, $extension, $name = NUL
 /**
  * Implements hook_theme().
  *
- * Provides a theme function for use with the RenderAPI that uses the #title and #attributes
- * properties of a render array, if they're present.
+ * Provides a theme function for use with the RenderAPI that uses the #title and
+ * #attributes properties of a render array, if they're present.
  */
 function workbench_theme($existing, $type, $theme, $path) {
   return array(

@@ -6,7 +6,7 @@
  */
 
 /**
- * Generic theme function for use with RenderAPI.
+ * Generic theme function for use with Render API.
  *
  * Renders the #title and #attributes properties if they are present.
  */

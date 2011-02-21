@@ -78,6 +78,7 @@ function workbench_create() {
 
   // Allow other modules to add content here.
   drupal_alter('workbench_create', $output);
+
   return $output;
 }
 
@@ -95,7 +96,7 @@ function _workbench_create() {
   $content = system_admin_menu_block($item);
 
   if (!empty($content)) {
-    // Theme the arrray of content type creation links using node.module's theme function.
+    // Theme the arrray of content type creation links.
     $output['#markup'] .= theme('node_add_list', array('content' => $content));
   }
   else {
@@ -104,4 +105,3 @@ function _workbench_create() {
 
   return $output;
 }
-

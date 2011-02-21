@@ -2,9 +2,7 @@
 
 /**
  * @file
- *  Workbench page callbacks.
- *
- * @copyright (C) Copyright 2010 Palantir.net
+ * Workbench page callbacks.
  */
 
 /**

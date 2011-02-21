@@ -1,11 +1,8 @@
 <?php
-// $Id$
 
 /**
  * @file
- *   Workbench module file for editorial workspaces.
- *
- * @copyright (C) Copyright 2010 Palantir.net
+ * Workbench module file for editorial workspaces.
  */
 
 /**

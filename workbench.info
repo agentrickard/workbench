@@ -1,8 +1,8 @@
-;$Id$
 name = Workbench
 description = Workbench editorial suite.
 package = Workbench
 core = 7.x
+dependencies[] = views
 configure = admin/config/workbench/settings
 files[] = workbench.module
 files[] = workbench.page.inc

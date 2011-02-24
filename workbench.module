@@ -56,7 +56,7 @@ function workbench_permission() {
       'title' => t('Administer Workbench settings'),
     ),
     'access workbench' => array(
-      'title' => t('Access a personal Workbench page'),
+      'title' => t('Access My Workbench'),
     ),
     'view all unpublished content' => array(
       'title' => 'View all unpublished content',

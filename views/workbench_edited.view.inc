@@ -13,7 +13,6 @@ $view->disabled = FALSE; /* Edit this to true to make a default view disabled in
 /* Display: Defaults */
 $handler = $view->new_display('default', 'Defaults', 'default');
 $handler->display->display_options['title'] = 'Content I\'ve Edited';
-$handler->display->display_options['use_ajax'] = FALSE;
 $handler->display->display_options['use_more_always'] = TRUE;
 $handler->display->display_options['use_more_text'] = 'view all';
 $handler->display->display_options['group_by'] = TRUE;
@@ -240,8 +239,8 @@ $handler->display->display_options['filters']['title']['operator'] = 'contains';
 $handler->display->display_options['filters']['title']['exposed'] = TRUE;
 $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
 $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
-$handler->display->display_options['filters']['title']['expose']['use_operator'] = TRUE;
 $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+$handler->display->display_options['filters']['title']['expose']['remember'] = 1;
 /* Filter: Node: Type */
 $handler->display->display_options['filters']['type']['id'] = 'type';
 $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -249,17 +248,18 @@ $handler->display->display_options['filters']['type']['field'] = 'type';
 $handler->display->display_options['filters']['type']['exposed'] = TRUE;
 $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
 $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
-$handler->display->display_options['filters']['type']['expose']['use_operator'] = TRUE;
 $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+$handler->display->display_options['filters']['type']['expose']['remember'] = 1;
 $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
 /* Filter: Node: Published */
 $handler->display->display_options['filters']['status']['id'] = 'status';
 $handler->display->display_options['filters']['status']['table'] = 'node';
 $handler->display->display_options['filters']['status']['field'] = 'status';
-$handler->display->display_options['filters']['status']['value'] = 'All';
+$handler->display->display_options['filters']['status']['value'] = '0';
 $handler->display->display_options['filters']['status']['exposed'] = TRUE;
 $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
 $handler->display->display_options['filters']['status']['expose']['identifier'] = 'published';
+$handler->display->display_options['filters']['status']['expose']['remember'] = 1;
 
 /* Display: Page */
 $handler = $view->new_display('page', 'Page', 'page_1');

@@ -17,6 +17,8 @@ CONTENTS
 3.  Permissions
 4.  Configuration
 5.  Using the module
+5.1  My Content
+5.2  Create Content
 6.  Troubleshooting
 7.  Developer notes
 7.1   API documentation

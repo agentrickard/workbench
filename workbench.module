@@ -150,7 +150,6 @@ function workbench_theme($existing, $type, $theme, $path) {
  *
  * This is done to convert the "type" field to a thumbnail for image files.
  *
- * TODO: decide if this function is preferable to hook workbench_preprocess_user_picture().
  */
 function workbench_preprocess_views_view_field(&$variables) {
   $view = $variables['view'];
@@ -158,31 +157,12 @@ function workbench_preprocess_views_view_field(&$variables) {
   if ($view->name == 'workbench_current_user'  && $variables['field']->definition['handler'] == 'views_handler_field_user_picture') {
     if (empty($variables['output'])) {
       // We could put the default picture here
-      $variables['output'] = '';
+      $variables['output'] = theme('image', array(
+        'path' => drupal_get_path('module', 'workbench') . '/images/profile_default.jpg',
+        'attributes' => array(
+          'width' => '100px',
+         ),
+      ));
     }
-  }
-}
-
-/**
- * Implementation of hook_preprocess_user_picture().
- *
- * Setting a default image within the workbench area.
- */
-function workbench_preprocess_user_picture(&$variables) {
-
-  if (arg(0) == 'admin'  && arg(1) == 'workbench' && empty($variables['user_picture'])) {
-
-  // TODO: make the image styles implementation work.
-   $variables['user_picture'] = theme('image', array(
-     'path' => drupal_get_path('module', 'workbench') . '/images/default_profile.png',
-     'attributes' => array(
-       'width' => '100px',
-     ),
-  ));
-
-   /* $variables['user_picture'] = theme('image_style', array(
-      'path' => 'sites/default/modules/workbench/workbench/face.png',
-      'style_name' => 'thumbnail'
-    ));*/
   }
 }

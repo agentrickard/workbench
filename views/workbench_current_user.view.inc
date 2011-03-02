@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Default View for information about the current user.
+ */
+
 $view = new view;
 $view->name = 'workbench_current_user';
 $view->description = 'Information about the current user.';

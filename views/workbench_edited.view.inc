@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Default View for content edited by the user.
+ */
+
 $view = new view;
 $view->name = 'workbench_edited';
 $view->description = 'Lists content edited by the user.';

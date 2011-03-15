@@ -56,3 +56,26 @@ function hook_workbench_create_alter(&$output) {
     );
   }
 }
+
+/**
+ * Return Workbench status information in a block.
+ *
+ * To reduce clutter, modules are encouraged to use this hook
+ * to provide debugging and other relevant information.
+ *
+ * @return
+ *   An array of message strings to print. The preferred format
+ *   is a one line string in the format Title: <em>Message</em>.
+ * @see workbench_block_view().
+ */
+function hook_workbench_block() {
+  // Add editing information to this page (if it's a node).
+  if ($node = menu_get_object()) {
+    if (node_access('update', $node)) {
+      return array(t('My Module: <em>You may not edit this content.</em>'));
+    }
+    else {
+      return array(t('My Module: <em>You may edit this content.</em>'));
+    }
+  }
+}

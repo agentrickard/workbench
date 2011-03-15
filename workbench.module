@@ -63,6 +63,42 @@ function workbench_permission() {
 }
 
 /**
+ * Implements hook_block_info().
+ *
+ * Register a block that other modules may hook into.
+ */
+function workbench_block_info() {
+  $blocks['block'] = array(
+    'info' => t('Workbench information'),
+    'weight' => -99,
+    'status' => 1,
+    'region' => 'content',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function workbench_block_view($delta = '') {
+  $items = module_invoke_all('workbench_block');
+  if (empty($items)) {
+    return;
+  }
+  $block = array(
+    'subject' => '',
+    'content' => array(
+      '#markup' => theme('container', array('element' => array('#children' => implode('<br />', $items), '#attributes' => array('class' => 'workbench-info-block')))),
+      '#attached' => array(
+        'css' => array(drupal_get_path('module', 'workbench') . '/css/workbench.block.css'),
+      ),
+    ),
+  );
+  return $block;
+}
+
+/**
  * Implements hook_views_api().
  */
 function workbench_views_api() {

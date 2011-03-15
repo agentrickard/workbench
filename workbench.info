@@ -4,7 +4,3 @@ package = Workbench
 core = 7.x
 configure = admin/config/workbench/settings
 dependencies[] = views
-files[] = workbench.module
-files[] = workbench.page.inc
-files[] = workbench.theme.inc
-files[] = workbench.views.inc

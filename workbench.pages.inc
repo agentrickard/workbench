@@ -20,14 +20,19 @@ function workbench_content() {
   $output = array();
 
   // Allow other modules to add content here.
-  $output['#attributes'] = array('class' => array('admin'));
+  $output['#attributes'] = array('class' => array('admin', 'my-workbench'));
+  $output['#attached'] = array(
+    'css' => array(drupal_get_path('module', 'workbench') . '/css/workbench.my-workbench.css'),
+  );
   $output['#theme'] = 'workbench_element';
+  // This left column is given a width of 35% by workbench.myworkbench.css.
   $output['workbench_current_user'] = array(
     '#title' => t('My Profile'),
     '#view' => 'workbench_current_user',
     '#attributes' => array('class' => array('left', 'clearfix')),
     '#theme' => 'workbench_element',
   );
+  // This right column is given a width of 65% by workbench.myworkbench.css.
   $output['workbench_edited'] = array(
     '#title' => t('Content I\'ve Edited'),
     '#view' => 'workbench_edited',

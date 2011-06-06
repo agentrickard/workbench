@@ -13,6 +13,9 @@
  * you may also specify a #view and #view_display attribute, both
  * of which are strings that indicate which View to render on the page.
  *
+ * The left and right columns in this output are given widths of 35% and 65%
+ * respectively by workbench.my-workbench.css.
+ *
  * @param $output
  *  A Render API array of content items, passed by reference.
  *

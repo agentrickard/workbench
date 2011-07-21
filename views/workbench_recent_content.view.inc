@@ -123,21 +123,6 @@ $handler->display->display_options['fields']['type']['hide_empty'] = 0;
 $handler->display->display_options['fields']['type']['empty_zero'] = 0;
 $handler->display->display_options['fields']['type']['link_to_node'] = 0;
 $handler->display->display_options['fields']['type']['machine_name'] = 0;
-/* Field: Content: Published */
-$handler->display->display_options['fields']['status']['id'] = 'status';
-$handler->display->display_options['fields']['status']['table'] = 'node';
-$handler->display->display_options['fields']['status']['field'] = 'status';
-$handler->display->display_options['fields']['status']['alter']['alter_text'] = 0;
-$handler->display->display_options['fields']['status']['alter']['make_link'] = 0;
-$handler->display->display_options['fields']['status']['alter']['absolute'] = 0;
-$handler->display->display_options['fields']['status']['alter']['word_boundary'] = 0;
-$handler->display->display_options['fields']['status']['alter']['ellipsis'] = 0;
-$handler->display->display_options['fields']['status']['alter']['strip_tags'] = 0;
-$handler->display->display_options['fields']['status']['alter']['trim'] = 0;
-$handler->display->display_options['fields']['status']['alter']['html'] = 0;
-$handler->display->display_options['fields']['status']['hide_empty'] = 0;
-$handler->display->display_options['fields']['status']['empty_zero'] = 0;
-$handler->display->display_options['fields']['status']['not'] = 0;
 /* Field: User: Name */
 $handler->display->display_options['fields']['name']['id'] = 'name';
 $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -224,10 +209,15 @@ $handler->display->display_options['filters']['type']['expose']['reduce'] = 0;
 $handler->display->display_options['filters']['status']['id'] = 'status';
 $handler->display->display_options['filters']['status']['table'] = 'node';
 $handler->display->display_options['filters']['status']['field'] = 'status';
-$handler->display->display_options['filters']['status']['value'] = 'All';
+$handler->display->display_options['filters']['status']['value'] = '1';
 $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+$handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
 $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
 $handler->display->display_options['filters']['status']['expose']['identifier'] = 'published';
+/* Filter criterion: Content: Published or admin */
+$handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+$handler->display->display_options['filters']['status_extra']['table'] = 'node';
+$handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
 
 /* Display: Page */
 $handler = $view->new_display('page', 'Page', 'page_1');
@@ -348,6 +338,11 @@ $handler->display->display_options['pager']['type'] = 'some';
 $handler->display->display_options['pager']['options']['items_per_page'] = '10';
 $handler->display->display_options['pager']['options']['offset'] = '0';
 $handler->display->display_options['defaults']['filters'] = FALSE;
+/* Filter criterion: Content: Published */
+$handler->display->display_options['filters']['status']['id'] = 'status';
+$handler->display->display_options['filters']['status']['table'] = 'node';
+$handler->display->display_options['filters']['status']['field'] = 'status';
+$handler->display->display_options['filters']['status']['value'] = '1';
 $translatables['workbench_recent_content'] = array(
   t('Defaults'),
   t('All Recent Content'),
@@ -364,10 +359,10 @@ $translatables['workbench_recent_content'] = array(
   t('author'),
   t('Title'),
   t('Type'),
-  t('Published'),
   t('Author'),
   t('Last updated'),
   t('edit'),
+  t('Published'),
   t('Page'),
   t('more'),
   t('Actions'),

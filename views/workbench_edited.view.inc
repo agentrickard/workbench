@@ -17,7 +17,7 @@ $view->disabled = FALSE; /* Edit this to true to make a default view disabled in
 
 /* Display: Defaults */
 $handler = $view->new_display('default', 'Defaults', 'default');
-$handler->display->display_options['title'] = 'Content I\'ve Edited';
+$handler->display->display_options['title'] = 'My Edits';
 $handler->display->display_options['use_more_always'] = TRUE;
 $handler->display->display_options['use_more_text'] = 'view all';
 $handler->display->display_options['group_by'] = TRUE;
@@ -269,7 +269,7 @@ $handler->display->display_options['filters']['status']['expose']['remember'] = 
 $handler = $view->new_display('page', 'Page', 'page_1');
 $handler->display->display_options['path'] = 'admin/workbench/content/edited';
 $handler->display->display_options['menu']['type'] = 'tab';
-$handler->display->display_options['menu']['title'] = 'Content I\'ve Edited';
+$handler->display->display_options['menu']['title'] = 'My Edits';
 $handler->display->display_options['menu']['weight'] = '1';
 
 /* Display: Block */
@@ -298,7 +298,7 @@ $handler->display->display_options['filters']['uid_current']['relationship'] = '
 $handler->display->display_options['filters']['uid_current']['value'] = '1';
 $translatables['workbench_edited'] = array(
   t('Defaults'),
-  t('Content I\'ve Edited'),
+  t('My Edits'),
   t('view all'),
   t('Apply'),
   t('Reset'),

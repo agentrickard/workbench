@@ -7,7 +7,7 @@
 
 $view = new view;
 $view->name = 'workbench_recent_content';
-$view->description = 'Content overview page for Wobrkbench.';
+$view->description = 'Content overview page for Workbench.';
 $view->tag = 'Workbench';
 $view->base_table = 'node';
 $view->human_name = '';

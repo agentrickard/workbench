@@ -29,6 +29,7 @@ function workbench_content() {
   $output['workbench_current_user'] = array(
     '#title' => t('My Profile'),
     '#view' => 'workbench_current_user',
+    '#view_display' => 'block_1',
     '#attributes' => array('class' => array('left', 'clearfix')),
     '#theme' => 'workbench_element',
   );

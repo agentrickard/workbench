@@ -177,11 +177,6 @@ function workbench_theme($existing, $type, $theme, $path) {
   );
 }
 
-
-
-
-
-
 /**
  * Implementation of hook_preprocess_views_view_table().
  *
@@ -201,5 +196,26 @@ function workbench_preprocess_views_view_field(&$variables) {
          ),
       ));
     }
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory() to let the system know
+ * where our task and task_handler plugins are.
+ */
+function workbench_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'page_manager') {
+    return 'plugins/page_manager/' . $plugin_type;
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function workbench_ctools_plugin_api($module, $api) {
+  // This includes a check for whether Panels is enabled since the Page Manager
+  // export is for Panels.
+  if ($module == 'page_manager' && $api == 'pages_default' && module_exists('panels')) {
+    return array('version' => 1);
   }
 }

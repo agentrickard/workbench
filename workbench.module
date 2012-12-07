@@ -15,7 +15,7 @@ function workbench_menu() {
     'title' => 'Workbench',
     'description' => 'Workbench',
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access workbench'),
+    'access arguments' => array('administer workbench'),
     'position' => 'right',
     'file' => 'system.admin.inc',
     'file path' => drupal_get_path('module', 'system'),

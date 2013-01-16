@@ -35,7 +35,7 @@ $handler->display->display_options['pager']['options']['expose']['items_per_page
 $handler->display->display_options['style_plugin'] = 'table';
 $handler->display->display_options['style_options']['columns'] = array(
   'nid' => 'nid',
-  'title_1' => 'title_1',
+  'title' => 'title',
   'type' => 'type',
   'status' => 'status',
   'timestamp' => 'timestamp',
@@ -51,7 +51,7 @@ $handler->display->display_options['style_options']['info'] = array(
     'separator' => '',
     'empty_column' => 0,
   ),
-  'title_1' => array(
+  'title' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -123,11 +123,11 @@ $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 
 $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = FALSE;
 $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
 /* Field: Content revision: Title */
-$handler->display->display_options['fields']['title_1']['id'] = 'title_1';
-$handler->display->display_options['fields']['title_1']['table'] = 'node_revision';
-$handler->display->display_options['fields']['title_1']['field'] = 'title';
-$handler->display->display_options['fields']['title_1']['relationship'] = 'vid';
-$handler->display->display_options['fields']['title_1']['link_to_node'] = TRUE;
+$handler->display->display_options['fields']['title']['id'] = 'title';
+$handler->display->display_options['fields']['title']['table'] = 'node_revision';
+$handler->display->display_options['fields']['title']['field'] = 'title';
+$handler->display->display_options['fields']['title']['relationship'] = 'vid';
+$handler->display->display_options['fields']['title']['link_to_node'] = TRUE;
 /* Field: Content: Type */
 $handler->display->display_options['fields']['type']['id'] = 'type';
 $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -163,17 +163,17 @@ $handler->display->display_options['filters']['uid_current']['relationship'] = '
 $handler->display->display_options['filters']['uid_current']['value'] = '1';
 $handler->display->display_options['filters']['uid_current']['group'] = 1;
 /* Filter criterion: Content revision: Title */
-$handler->display->display_options['filters']['title_1']['id'] = 'title_1';
-$handler->display->display_options['filters']['title_1']['table'] = 'node_revision';
-$handler->display->display_options['filters']['title_1']['field'] = 'title';
-$handler->display->display_options['filters']['title_1']['operator'] = 'contains';
-$handler->display->display_options['filters']['title_1']['group'] = 1;
-$handler->display->display_options['filters']['title_1']['exposed'] = TRUE;
-$handler->display->display_options['filters']['title_1']['expose']['operator_id'] = 'title_1_op';
-$handler->display->display_options['filters']['title_1']['expose']['label'] = 'Title';
-$handler->display->display_options['filters']['title_1']['expose']['operator'] = 'title_1_op';
-$handler->display->display_options['filters']['title_1']['expose']['identifier'] = 'title_1';
-$handler->display->display_options['filters']['title_1']['expose']['remember'] = TRUE;
+$handler->display->display_options['filters']['title']['id'] = 'title';
+$handler->display->display_options['filters']['title']['table'] = 'node_revision';
+$handler->display->display_options['filters']['title']['field'] = 'title';
+$handler->display->display_options['filters']['title']['operator'] = 'contains';
+$handler->display->display_options['filters']['title']['group'] = 1;
+$handler->display->display_options['filters']['title']['exposed'] = TRUE;
+$handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_1_op';
+$handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+$handler->display->display_options['filters']['title']['expose']['operator'] = 'title_1_op';
+$handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+$handler->display->display_options['filters']['title']['expose']['remember'] = TRUE;
 /* Filter criterion: Content: Type */
 $handler->display->display_options['filters']['type']['id'] = 'type';
 $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -241,7 +241,6 @@ $handler->display->display_options['filters']['type']['table'] = 'node';
 $handler->display->display_options['filters']['type']['field'] = 'type';
 $handler->display->display_options['filters']['type']['relationship'] = 'vid';
 $handler->display->display_options['filters']['type']['operator'] = 'not empty';
-
 $translatables['workbench_edited'] = array(
   t('Defaults'),
   t('My Edits'),
@@ -254,9 +253,14 @@ $translatables['workbench_edited'] = array(
   t('Items per page'),
   t('- All -'),
   t('Offset'),
+  t('« first'),
+  t('‹ previous'),
+  t('next ›'),
+  t('last »'),
   t('Edited something recently and it\'s not in this list? If a content type isn\'t revisioned and you didn\'t create it, it will not show up in this list when you edit it. You can find it in the \'Content I Can Edit\' tab.'),
   t('You haven\'t created or edited any content.'),
   t('revision user'),
+  t('Get the actual content from a content revision.'),
   t('Title'),
   t('Type'),
   t('Published'),

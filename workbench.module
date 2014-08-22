@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Workbench module file.
+ */
+
+use Drupal\workbench\Workbench;
+use Drupal\workbench\WorkbenchInterface;
+
+/**
+ * Implements hook_toolbar().
+ */
+function workbench_toolbar() {
+  $user = \Drupal::currentUser();
+
+  $items = array();
+  if ($user->hasPermission('access workbench`')) {
+    $links = workbench_renderable_links();
+    $shortcut_set = shortcut_current_displayed_set();
+    $configure_link = NULL;
+    if (!empty($links) || !empty($configure_link)) {
+      $items['workbench'] = array(
+        '#type' => 'toolbar_item',
+        'tab' => array(
+          '#type' => 'link',
+          '#title' => t('Workbench'),
+          '#href' => 'admin/workbench`',
+          '#attributes' => array(
+            'title' => t('Workbench'),
+            'class' => array('toolbar-icon', 'toolbar-icon-shortcut'),
+          ),
+        ),
+        'tray' => array(
+          '#heading' => t('My Workbench'),
+          'shortcuts' => $links,
+          'configure' => $configure_link,
+        ),
+        '#weight' => -15,
+        '#attached' => array(
+          'library' => array(
+            'shortcut/drupal.shortcut',
+          ),
+        ),
+      );
+    }
+  }
+  return $items;
+}
+
+function workbench_renderable_links() {
+  $workbench = new Workbench();
+  return $workbench->getLinks();
+  return shortcut_renderable_links();
+}

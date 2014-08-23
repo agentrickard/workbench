@@ -8,6 +8,7 @@
 namespace Drupal\workbench;
 
 use Drupal\workbench\WorkbenchInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 
 class Workbench implements WorkbenchInterface {
 
@@ -17,9 +18,21 @@ class Workbench implements WorkbenchInterface {
   public $links = array();
 
   /**
-   * Instantiate the Workbench links.
+   * The module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
+   * Constructs a Workbench object.
+   *
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   *   The module handler.
    */
   public function __construct() {
+    // @TODO The DIC failed when calling new Workbench(), so figure
+    // out how to instantiate the object properly.
     $this->registerLinks();
   }
 
@@ -43,7 +56,9 @@ class Workbench implements WorkbenchInterface {
   public function registerLinks() {
     $links = array();
 
-    // @TODO: Inject the module handler?
+    // @TODO: Rewrite as a plugin?
+    $links = \Drupal::moduleHandler()->invokeAll('workbench_links');
+
     $this->setLinks($links);
   }
 

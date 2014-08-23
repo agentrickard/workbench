@@ -48,8 +48,17 @@ function workbench_toolbar() {
   return $items;
 }
 
+/**
+ * Gets the links to use for Workbench.
+ */
 function workbench_renderable_links() {
   $workbench = new Workbench();
-  return $workbench->getLinks();
-  return shortcut_renderable_links();
+  return $links = $workbench->getLinks();
+}
+
+/**
+ * Implements hook_workbench_links().
+ */
+function workbench_workbench_links() {
+
 }

@@ -9,19 +9,19 @@ namespace Drupal\workbench;
 
 interface WorkbenchInterface {
 
-/**
- * Get the links for this workbench.
- */
-public function getLinks();
+  /**
+   * Get the links for this workbench.
+   */
+  public function getLinks();
 
-/**
- * Set the links for this workbench.
- */
-public function setLinks(array $links);
+  /**
+   * Set the links for this workbench.
+   */
+  public function setLinks(array $links);
 
-/**
- * Register the links for this workbench.
- */
-public function registerLinks();
+  /**
+   * Register the links for this workbench.
+   */
+  public function registerLinks();
 
 }

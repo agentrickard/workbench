@@ -31,9 +31,8 @@ class Workbench implements WorkbenchInterface {
    *   The module handler.
    */
   public function __construct() {
-    // @TODO The DIC failed when calling new Workbench(), so figure
-    // out how to instantiate the object properly.
-    $this->registerLinks();
+    $this->moduleHandler = \Drupal::service('module_handler');
+    $this->links = $this->registerLinks();
   }
 
   /**
@@ -57,7 +56,8 @@ class Workbench implements WorkbenchInterface {
     $links = array();
 
     // @TODO: Rewrite as a plugin?
-    $links = \Drupal::moduleHandler()->invokeAll('workbench_links');
+
+    $links = $this->moduleHandler->invokeAll('workbench');
 
     $this->setLinks($links);
   }

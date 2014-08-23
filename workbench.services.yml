@@ -1,6 +1,0 @@
-services:
-  workbench:
-    class: Drupal\workbench\Workbench
-    tags:
-      - { name: persist }
-    arguments: ['@module_handler']

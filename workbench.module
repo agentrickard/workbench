@@ -52,8 +52,24 @@ function workbench_toolbar() {
  * Gets the links to use for Workbench.
  */
 function workbench_renderable_links() {
+  $workbench_links = array();
+
   $workbench = new Workbench();
-  return $links = $workbench->getLinks();
+
+  $links = $workbench->getLinks();
+  if (!empty($links)) {
+    $workbench_links = array(
+      '#theme' => 'links__toolbar_workbench',
+      '#links' => $links,
+      '#attributes' => array(
+        'class' => array('menu'),
+      ),
+      '#cache' => array(
+        'tags' => NestedArray::mergeDeepArray($all_cache_tags),
+      ),
+    );
+  }
+  return $workbench_links;
 }
 
 /**

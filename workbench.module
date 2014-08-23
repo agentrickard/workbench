@@ -76,7 +76,6 @@ function workbench_renderable_links() {
  * Implements hook_workbench_links().
  */
 function workbench_workbench_links() {
-dpm('foo');
   $links[] = array(
     'title' => 'Foo',
     'href' => 'bar',

@@ -14,7 +14,7 @@ class Workbench implements WorkbenchInterface {
   /**
    * An array of links to render as part of the Workbench.
    */
-  public $links = array();
+  public $links;
 
   /**
    * The module handler.
@@ -28,13 +28,15 @@ class Workbench implements WorkbenchInterface {
    */
   public function __construct() {
     $this->moduleHandler = \Drupal::service('module_handler');
-    $this->links = $this->registerLinks();
   }
 
   /**
    * @inheritdoc
    */
   public function getLinks() {
+    if (!isset($this->links)) {
+      $this->registerLinks();
+    }
     return $this->links;
   }
 
@@ -52,8 +54,7 @@ class Workbench implements WorkbenchInterface {
     $links = array();
 
     // @TODO: Rewrite as a plugin?
-
-    $links = $this->moduleHandler->invokeAll('workbench');
+    $links = $this->moduleHandler->invokeAll('workbench_links');
 
     $this->setLinks($links);
   }

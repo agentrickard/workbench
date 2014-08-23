@@ -53,10 +53,9 @@ function workbench_toolbar() {
  */
 function workbench_renderable_links() {
   $workbench_links = array();
-
   $workbench = new Workbench();
-
   $links = $workbench->getLinks();
+
   if (!empty($links)) {
     $workbench_links = array(
       '#theme' => 'links__toolbar_workbench',
@@ -64,8 +63,9 @@ function workbench_renderable_links() {
       '#attributes' => array(
         'class' => array('menu'),
       ),
+      // @TODO: cache per role.
       '#cache' => array(
-        'tags' => NestedArray::mergeDeepArray($all_cache_tags),
+        'tags' => 'workbench',
       ),
     );
   }
@@ -76,5 +76,10 @@ function workbench_renderable_links() {
  * Implements hook_workbench_links().
  */
 function workbench_workbench_links() {
-
+dpm('foo');
+  $links[] = array(
+    'title' => 'Foo',
+    'href' => 'bar',
+  );
+  return $links;
 }

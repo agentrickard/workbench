@@ -1,0 +1,7 @@
+workbench.overview:
+  path: '/admin/workflow/workbench'
+  defaults:
+    _content: '\Drupal\workbench\Controller\WorkbenchController::defaultPage'
+    _title: 'My Workbench'
+  requirements:
+    _permission: 'access workbench'

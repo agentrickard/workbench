@@ -9,13 +9,25 @@ use Drupal\workbench\Workbench;
 use Drupal\workbench\WorkbenchInterface;
 
 /**
+ * Implements hook_permission().
+ */
+function workbench_permission() {
+  $permissions = array(
+    'access workbench' => array(
+      'title' => t('Access My Workbench page'),
+    ),
+  );
+  return $permissions;
+}
+
+/**
  * Implements hook_toolbar().
  */
 function workbench_toolbar() {
   $user = \Drupal::currentUser();
 
   $items = array();
-  if ($user->hasPermission('access workbench`')) {
+  if ($user->hasPermission('access workbench')) {
     $links = workbench_renderable_links();
     $shortcut_set = shortcut_current_displayed_set();
     $configure_link = NULL;
@@ -77,8 +89,8 @@ function workbench_renderable_links() {
  */
 function workbench_workbench_links() {
   $links[] = array(
-    'title' => 'Foo',
-    'href' => 'bar',
+    'title' => 'My Workbench',
+    'route_name' => 'workbench.overview',
   );
   return $links;
 }

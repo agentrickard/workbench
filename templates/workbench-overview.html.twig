@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the My Workbench page.
+ *
+ * This template renders blocks assigned to the My Workbench page.
+ *
+ * Available variables:
+ * - header: HTML to render before the display.
+ * - blocks: Array of rendered blocks.
+ * - footer: HTML to render after the display.
+ *
+ */
+#}
+<div id="workbench-header">
+  {{ header }}
+</div>
+<div id="workbench-blocks">
+  {% for block in blocks %}
+    Hi
+    {{ block.title }}
+    {{ block.content }}
+  {% endfor %}
+</div>
+<div id="workbench-footer">
+  {{ footer }}
+</div>

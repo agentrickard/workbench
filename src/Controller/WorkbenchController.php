@@ -16,8 +16,12 @@ class WorkbenchController extends ControllerBase {
    * Returns the default Workbench page.
    */
   public function defaultPage() {
+    $blocks = $this->moduleHandler()->invokeAll('workbench_content');
     $build['page'] = array(
-      '#markup' => 'Foo',
+      '#theme' => 'workbench_overview',
+      '#header' => array('#markup' => 'Foo'),
+      '#blocks' => array($blocks),
+      '#footer' => array('#markup' => 'Bar'),
     );
     return $build;
   }

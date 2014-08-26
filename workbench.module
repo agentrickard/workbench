@@ -94,3 +94,33 @@ function workbench_workbench_links() {
   );
   return $links;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function workbench_theme() {
+  return array(
+    'workbench_overview' => array(
+      'variables' => array('header' => NULL, 'blocks' => array(), 'footer' => NULL),
+      'template' => 'workbench-overview',
+    ),
+    'workbench_element' => array(
+      'render element' => 'element',
+      'template' => 'workbench-element',
+    ),
+  );
+}
+
+/**
+ * Implements hook_workbench_page().
+ */
+function workbench_workbench_content() {
+  // This right column is given a width of 65% by workbench.myworkbench.css.
+  $content['workbench_recent'] = array(
+    '#view' => 'workbench',
+    '#view_display' => 'block_1',
+    '#attributes' => array('class' => array('right', 'clearfix')),
+    '#theme' => 'workbench_element',
+  );
+  return $content;
+}

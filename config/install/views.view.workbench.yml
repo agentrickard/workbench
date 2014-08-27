@@ -5,9 +5,9 @@ dependencies:
     - node
 id: workbench
 label: Workbench
-module: views
+module: workbench
 description: 'Content overview for Workbench'
-tag: ''
+tag: workbench
 base_table: node
 base_field: nid
 core: 8.x

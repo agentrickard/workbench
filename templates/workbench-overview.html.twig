@@ -17,9 +17,10 @@
 </div>
 <div id="workbench-blocks">
   {% for block in blocks %}
-    Hi
-    {{ block.title }}
-    {{ block.content }}
+    <div class="{{ block.attributes }}">
+      <h2>{{ block.title }}</h2>
+      {{ block.content }}
+    </div>
   {% endfor %}
 </div>
 <div id="workbench-footer">

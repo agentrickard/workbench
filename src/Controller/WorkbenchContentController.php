@@ -50,20 +50,19 @@ class WorkbenchContentController extends NodeController {
       '#title'        => t('My Profile'),
       '#view_id'      => 'workbench_current_user',
       '#view_display' => 'block_1',
-      '#attributes'   => array('class' => array('left', 'clearfix')),
+      '#attributes'   => array('class' => array('workbench-left')),
     );
     // This right column is given a width of 65% by workbench.myworkbench.css.
     $blocks['workbench_edited'] = array(
       '#view_id'      => 'workbench_edited',
       '#view_display' => 'block_1',
-      '#attributes'   => array('class' => array('right', 'clearfix')),
+      '#attributes'   => array('class' => array('workbench-right')),
     );
     $blocks['workbench_recent_content'] = array(
       '#view_id'      => 'workbench_recent_content',
       '#view_display' => 'block_1',
       '#attributes'   => array(
-        'class' => array('clearfix'),
-        'style' => array('clear: both;'),
+        'class' => array('workbench-full', 'workbench-spacer'),
       ),
     );
 
@@ -86,12 +85,7 @@ class WorkbenchContentController extends NodeController {
       $block_id = "views_block:{$view_id}-{$display_id}";
       $plugin = new ViewsBlock($config, $block_id, $definition, $views_executable, $view_storage, $user);
       $build = $plugin->build();
-
-      if (isset($block['#attributes'])) {
-        foreach ($block['#attributes'] as $k => $v) {
-          $build['#attributes'][$k] = array_merge($build['#attributes'][$k], $v);
-        }
-      }
+      $build['#attributes'] = array_merge_recursive($build['#attributes'], $block['#attributes']);
 
       $output .= drupal_render($build);
     }

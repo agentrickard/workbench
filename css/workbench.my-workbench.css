@@ -2,10 +2,21 @@
  * CSS for the my-workbench page.
  */
 
-div.admin.my-workbench .left {
+div.admin.my-workbench .workbench-left {
   width: 35%;
+  float: left;
 }
 
-div.admin.my-workbench .right {
+div.admin.my-workbench .workbench-right {
   width: 65%;
+  float: right;
+}
+
+div.admin.my-workbench .workbench-full {
+  width: 100%;
+  clear: both;
+}
+
+div.admin.my-workbench .workbench-spacer {
+  padding-top: 2em;
 }

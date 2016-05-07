@@ -12,8 +12,8 @@ easily access their own content.
 
 Workbench gains more features when you install and enable these modules:
 
-Workbench Access - http://drupal.org/project/workbench_access
-Workbench Moderation - http://drupal.org/project/workbench_moderation
+* Workbench Access - http://drupal.org/project/workbench_access
+* Workbench Moderation - http://drupal.org/project/workbench_moderation
 
 One way to think about Workbench is that it becomes the Dashboard for Content
 Contributors.  Basically, putting all of the content needs of a user in one

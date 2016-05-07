@@ -1,0 +1,10 @@
+workbench.block:
+  version: VERSION
+  css:
+    theme:
+      css/workbench.block.css: {}
+workbench.content:
+  version: VERSION
+  css:
+    theme:
+      css/workbench.my-workbench.css: {}

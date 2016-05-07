@@ -692,7 +692,12 @@ display:
           entity_field: changed
           plugin_id: date
       title: 'Workbench: Recent content'
-      header: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          plugin_id: text
       footer: {  }
       empty:
         area:
@@ -754,6 +759,7 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
+        header: false
       pager:
         type: some
         options:
@@ -1121,6 +1127,20 @@ display:
       use_more: true
       use_more_always: false
       use_more_text: 'view all'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: false
+          tokenize: false
+          content:
+            value: '<h3>Recent content</h3>'
+            format: basic_html
+          plugin_id: text
     cache_metadata:
       max-age: 0
       contexts:

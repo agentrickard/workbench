@@ -729,6 +729,9 @@ display:
         operator: AND
         groups:
           1: AND
+      use_ajax: false
+      link_url: ''
+      link_display: page_1
     cache_metadata:
       max-age: 0
       contexts:
@@ -772,7 +775,7 @@ display:
           empty: false
           tokenize: false
           content:
-            value: 'Five of the most recently updated pieces of content.'
+            value: '<h3>Your most recent edits</h3>'
             format: basic_html
           plugin_id: text
       filters:
@@ -879,7 +882,7 @@ display:
       display_extenders: {  }
       path: admin/workbench/content/edited
       menu:
-        type: tab
+        type: none
         title: 'My edits'
         description: ''
         expanded: false

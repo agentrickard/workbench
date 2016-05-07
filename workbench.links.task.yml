@@ -10,11 +10,11 @@ workbench.create_content_tab:
   base_route: workbench.content
 workbench.my_edited_tab:
   route_name: workbench.my_edited
-  title: 'My Edits'
+  title: 'My edits'
   weight: 5
   base_route: workbench.content
 workbench.all_content_tab:
   route_name: workbench.all_content
-  title: 'All Recent Content'
+  title: 'All recent content'
   weight: 10
   base_route: workbench.content

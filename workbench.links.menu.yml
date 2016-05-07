@@ -6,4 +6,15 @@ workbench.content:
 workbench.create_content:
   title: 'Create content'
   route_name: workbench.create_content
+  weight: 0
+  parent: workbench.content
+workbench.my_edited_tab:
+  route_name: workbench.my_edited
+  title: 'My edits'
+  weight: 5
+  parent: workbench.content
+workbench.all_content_tab:
+  route_name: workbench.all_content
+  title: 'All recent content'
+  weight: 10
   parent: workbench.content

@@ -24,8 +24,7 @@ class WorkbenchBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $args['node'] = \Drupal::routeMatch()->getParameter('node');
-    $items = \Drupal::moduleHandler()->invokeAll('workbench_block', $args);
+    $items = \Drupal::moduleHandler()->invokeAll('workbench_block');
     if (empty($items)) {
       return array();
     }

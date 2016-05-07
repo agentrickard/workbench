@@ -1,7 +1,23 @@
-workbench.overview:
-  path: '/admin/workflow/workbench'
+workbench.content:
+  path: '/admin/workbench'
   defaults:
-    _content: '\Drupal\workbench\Controller\WorkbenchController::defaultPage'
+    _controller: '\Drupal\workbench\Controller\WorkbenchContentController::content'
     _title: 'My Workbench'
+    _description: 'My Workbench area'
+  requirements:
+    _permission: 'access workbench'
+workbench.create_content:
+  path: '/admin/workbench/create'
+  defaults:
+    _controller: '\Drupal\workbench\Controller\WorkbenchContentController::addPage'
+  requirements:
+    _permission: 'access workbench'
+    _node_add_access: 'node'
+workbench.my_edited:
+  path: '/admin/workbench/content/edited'
+  requirements:
+    _permission: 'access workbench'
+workbench.all_content:
+  path: '/admin/workbench/content/all'
   requirements:
     _permission: 'access workbench'

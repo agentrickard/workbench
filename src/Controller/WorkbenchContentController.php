@@ -21,7 +21,7 @@ class WorkbenchContentController extends NodeController {
    *
    * @see hook_workbench_create_alter()
    *
-   * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+   * @return array
    *    A Render API array of content creation options.
    */
   public function addPage() {

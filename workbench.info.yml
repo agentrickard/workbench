@@ -5,5 +5,7 @@ package: Workbench
 version: VERSION
 core: 8.x
 dependencies:
+  - node
   - toolbar
+  - user
   - views

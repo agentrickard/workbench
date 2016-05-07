@@ -8,3 +8,8 @@ workbench.content:
   css:
     theme:
       css/workbench.my-workbench.css: {}
+workbench.toolbar:
+  version: VERSION
+  css:
+    theme:
+      css/workbench.toolbar.css: {}

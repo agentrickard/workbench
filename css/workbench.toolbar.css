@@ -1,0 +1,10 @@
+/**
+ * CSS for rendering the Workbench information block.
+ */
+
+.toolbar-icon-workbench-content::before {
+    background-image: url("/core/themes/stable/images/core/icons/787878/pencil.svg");
+}
+.toolbar-icon-workbench-content:active::before, .toolbar-icon-workbench-content.is-active::before {
+    background-image: url("../images/icons/000000/pencil.svg");
+}

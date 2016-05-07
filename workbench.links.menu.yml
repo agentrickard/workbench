@@ -2,7 +2,7 @@ workbench.content:
   title: 'My Workbench'
   route_name: workbench.content
   parent: system.admin
-  weight: -10
+  weight: -15
 workbench.create_content:
   title: 'Create content'
   route_name: workbench.create_content

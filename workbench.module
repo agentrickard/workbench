@@ -4,7 +4,3 @@
  * @file
  * Workbench module file.
  */
-
-use Drupal\workbench\Workbench;
-use Drupal\workbench\WorkbenchInterface;
-

@@ -92,7 +92,7 @@ be displayed in the Your most recent edits block.
 Notice the sub tabs:
 
  - Your most recent edits
- - Recent Content
+ - Recent content
 
 These go to full page lists with filters available to shorten the list of
 content.  You can filter the list by:

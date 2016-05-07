@@ -6,7 +6,9 @@
 
 namespace Drupal\workbench\Plugin\Block;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Register a block that other modules may hook into.
@@ -33,6 +35,20 @@ class WorkbenchBlock extends BlockBase {
         'library' => array('workbench/workbench.block'),
       ),
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function blockAccess(AccountInterface $account) {
+    return AccessResult::allowedIfHasPermission($account, 'access workbench');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheContexts() {
+    return ['url.path'];
   }
 
 }

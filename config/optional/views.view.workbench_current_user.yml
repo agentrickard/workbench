@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.storage.user.user_picture
+    - image.style.thumbnail
   module:
     - image
     - user
@@ -173,8 +174,8 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: ''
-            image_link: content
+            image_style: thumbnail
+            image_link: ''
           group_column: ''
           group_columns: {  }
           group_rows: true

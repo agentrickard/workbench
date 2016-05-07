@@ -5,6 +5,7 @@ package: Workbench
 version: VERSION
 core: 8.x
 dependencies:
+  - image
   - node
   - toolbar
   - user

@@ -390,7 +390,7 @@ display:
           id: changed
           table: node_field_revision
           field: changed
-          relationship: none
+          relationship: vid
           group_type: group
           admin_label: ''
           label: 'Last updated'

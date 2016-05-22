@@ -85,8 +85,12 @@ class WorkbenchContentController extends NodeController {
       $block_id = "views_block:{$view_id}-{$display_id}";
       $plugin = new ViewsBlock($config, $block_id, $definition, $views_executable, $view_storage, $user);
       $build = $plugin->build();
-      $build['#attributes'] = array_merge_recursive($build['#attributes'], $block['#attributes']);
-
+      if (!isset($build['#attributes'])) {
+        $build['#attributes'] = $block['#attributes'];
+      }
+      else {
+        $build['#attributes'] = array_merge_recursive($build['#attributes'], $block['#attributes']);
+      }
       $output .= drupal_render($build);
     }
 

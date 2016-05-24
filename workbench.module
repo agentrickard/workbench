@@ -20,7 +20,7 @@ function workbench_toolbar() {
       '#url' => Url::fromRoute('workbench.content'),
       '#attributes' => array(
         'title' => t('My personal editorial workspace'),
-        'class' => array('toolbar-icon', 'toolbar-icon-edit'),
+        'class' => array('toolbar-icon', 'toolbar-icon-workbench-content'),
         'data-toolbar-escape-admin' => FALSE,
       ),
     ),

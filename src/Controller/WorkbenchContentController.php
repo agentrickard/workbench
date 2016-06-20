@@ -7,6 +7,7 @@
 namespace Drupal\workbench\Controller;
 
 use Drupal\node\Controller\NodeController;
+use Drupal\views\Views;
 use Drupal\views\Plugin\Block\ViewsBlock;
 
 /**
@@ -79,6 +80,9 @@ class WorkbenchContentController extends NodeController {
     $user = $this->currentUser();
 
     foreach ($blocks as $key => $block) {
+      if (!Views::getView($block['#view_id'])) {
+        continue;
+      }
       $view_id = $block['#view_id'];
       $display_id = $block['#view_display'];
 

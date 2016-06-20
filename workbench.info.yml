@@ -2,7 +2,6 @@ name: Workbench
 type: module
 description: 'Editorial dashboards and shortcuts.'
 package: Workbench
-version: VERSION
 core: 8.x
 dependencies:
   - image

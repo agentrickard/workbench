@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\workbench\Controller\WorkbenchContentController.
- */
 
 namespace Drupal\workbench\Controller;
 

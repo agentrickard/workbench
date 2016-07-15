@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\workbench\Plugin\Block\WorkbenchBlock.
- */
 
 namespace Drupal\workbench\Plugin\Block;
 

@@ -1,20 +1,20 @@
 workbench.content:
   title: 'My Workbench'
   route_name: workbench.content
-  parent: system.admin
+  menu_name: workbench
   weight: -15
 workbench.create_content:
   title: 'Create content'
   route_name: workbench.create_content
   weight: 0
-  parent: workbench.content
+  menu_name: workbench
 workbench.my_edited:
   route_name: workbench.my_edited
   title: 'My edits'
   weight: 5
-  parent: workbench.content
+  menu_name: workbench
 workbench.all_content:
   route_name: workbench.all_content
   title: 'All recent content'
   weight: 10
-  parent: workbench.content
+  menu_name: workbench

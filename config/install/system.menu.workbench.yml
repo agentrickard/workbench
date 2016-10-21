@@ -1,0 +1,6 @@
+id: workbench
+label: 'Workbench'
+description: The editorial workbench.
+langcode: en
+locked: true
+

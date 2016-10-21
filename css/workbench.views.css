@@ -1,0 +1,8 @@
+/**
+ * CSS for Workbench views.
+ */
+
+.view[class*=workbench] .workbench-action-link {
+  width: 3em;
+  display: inline-block;
+}

@@ -78,3 +78,14 @@ function workbench_toolbar_prerender_tray(array $element) {
   $element['administration_menu'] = $menu_tree->build($tree);
   return $element;
 }
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Add custom CSS to Workbench views.
+ */
+function workbench_views_pre_render(\Drupal\views\ViewExecutable $view) {
+  if (isset($view) && $view->storage->get('tag') == 'Workbench') {
+    $view->element['#attached']['library'][] = 'workbench/workbench.views';
+  }
+}

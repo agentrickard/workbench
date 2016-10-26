@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Url;
+use \Drupal\Core\Menu\MenuTreeParameters;
 
 /**
  * Implements hook_toolbar().
@@ -20,8 +21,19 @@ function workbench_toolbar() {
       '#url' => Url::fromRoute('workbench.content'),
       '#attributes' => array(
         'title' => t('My personal editorial workspace'),
-        'class' => array('toolbar-icon', 'toolbar-icon-workbench-content'),
-        'data-toolbar-escape-admin' => FALSE,
+        'class' => array('toolbar-icon', 'toolbar-icon-workbench-content-tab'),
+      ),
+    ),
+    'tray' => array(
+      '#heading' => t('Your Workbench'),
+      'workbench_toolbar' => array(
+        '#pre_render' => array(
+          'workbench_toolbar_prerender_tray',
+        ),
+      ),
+      '#type' => 'container',
+      '#attributes' => array(
+        'class' => array('toolbar-menu-administration'),
       ),
     ),
     '#attached' => array(
@@ -33,4 +45,36 @@ function workbench_toolbar() {
   );
 
   return $items;
+}
+
+/**
+ * Render the Workbench toolbar tray.
+ *
+ * @param array $element
+ *   The tray render array.
+ *
+ * @return array
+ *   The tray render array with the Workbench items added.
+ *
+ * @see toolbar_prerender_toolbar_administration_tray()
+ * @see drupal_render()
+ */
+function workbench_toolbar_prerender_tray(array $element) {
+  $menu_tree = \Drupal::service('toolbar.menu_tree');
+
+  $parameters = new MenuTreeParameters();
+  $parameters->setMinDepth(1)->setMaxDepth(1);
+
+  $tree = $menu_tree->load('workbench', $parameters);
+
+  $manipulators = array(
+    array('callable' => 'menu.default_tree_manipulators:checkAccess'),
+    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
+    array('callable' => 'toolbar_menu_navigation_links'),
+  );
+
+  $tree = $menu_tree->transform($tree, $manipulators);
+
+  $element['administration_menu'] = $menu_tree->build($tree);
+  return $element;
 }

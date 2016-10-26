@@ -1,10 +1,56 @@
 /**
- * CSS for rendering the Workbench information block.
+ * CSS for displaying an icon on the Workbench toolbar tab.
+ *
+ * Each of the toolbar tray items uses the same icon as the toolbar tab, but
+ * they're broken out so that this is ready to add a custom icon for each.
  */
 
-.toolbar-icon-workbench-content::before {
-    background-image: url("/core/themes/stable/images/core/icons/787878/pencil.svg");
+/**
+ * Toolbar item: Workbench
+ */
+a.toolbar-icon-workbench-content-tab::before {
+    background-image: url("../images/icons/bebebe/workbench.svg");
 }
-.toolbar-icon-workbench-content:active::before, .toolbar-icon-workbench-content.is-active::before {
-    background-image: url("../images/icons/000000/pencil.svg");
+a.toolbar-icon-workbench-content-tab.is-active::before, .toolbar-icon-workbench-content.is-active::before {
+    background-image: url("../images/icons/ffffff/workbench.svg");
+}
+
+/**
+ * Tray item: My Workbench
+ */
+.toolbar-icon-workbench-content::before {
+    background-image: url("../images/icons/787878/workbench.svg");
+}
+.toolbar-icon-workbench-content.is-active::before, .toolbar-icon-workbench-content.is-active::before {
+    background-image: url("../images/icons/000000/workbench.svg");
+}
+
+/**
+ * Tray item: Create Content
+ */
+.toolbar-icon-workbench-create-content::before {
+    background-image: url("../images/icons/787878/workbench.svg");
+}
+.toolbar-icon-workbench-create-content.is-active::before {
+    background-image: url("../images/icons/000000/workbench.svg");
+}
+
+/**
+ * Tray item: My Edits
+ */
+.toolbar-icon-workbench-my-edited::before {
+    background-image: url("../images/icons/787878/workbench.svg");
+}
+.toolbar-icon-workbench-my-edited.is-active::before {
+    background-image: url("../images/icons/000000/workbench.svg");
+}
+
+/**
+ * Tray item: All Recent Content
+ */
+.toolbar-icon-workbench-all-content::before {
+    background-image: url("../images/icons/787878/workbench.svg");
+}
+.toolbar-icon-workbench-all-content.is-active::before {
+    background-image: url("../images/icons/000000/workbench.svg");
 }

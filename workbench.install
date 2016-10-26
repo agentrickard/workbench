@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Uninstall config.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function workbench_uninstall() {
+  \Drupal::configFactory()->getEditable('system.menu.workbench')->delete();
+}
+
+/**
+ * Add a menu for Workbench.
+ */
+function workbench_update_8001(&$sandbox) {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('system.menu.workbench');
+  $config->set('id', 'workbench');
+  $config->set('label', 'Workbench');
+  $config->set('description', 'The editorial workbench.');
+  $config->set('langcode', 'en');
+  $config->set('locked', TRUE);
+  $config->save(TRUE);
+}

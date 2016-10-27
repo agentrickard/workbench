@@ -1,0 +1,3 @@
+use workbench_tabs:
+  title: 'Use Workbench Tabs'
+  description: 'View the status messages and local task tabs as Workbench Tabs.'

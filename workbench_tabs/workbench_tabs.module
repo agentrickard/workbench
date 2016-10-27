@@ -1,0 +1,77 @@
+<?php
+/**
+ * @file
+ * Drupal hooks.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function workbench_tabs_theme() {
+  return [
+    'workbench_tabs' => [
+      'render element' => 'element',
+    ],
+    'workbench_tabs_menu_local_task' => [
+      'render element' => 'element',
+    ],
+    'workbench_tabs_menu_local_tasks' => [
+      'variables' => ['primary' => NULL, 'secondary' => NULL],
+    ],
+    'workbench_tabs_status_messages' => [
+      'variables' => ['status_headings' => [], 'message_list' => NULL],
+    ],
+  ];
+}
+
+/**
+ * Preprocess variables for the workbench_tabs_menu_local_task template.
+ *
+ * Wraps the core menu_local_task preprocess function.
+ *
+ * @ingroup themeable
+ */
+function template_preprocess_workbench_tabs_menu_local_task(&$variables) {
+  template_preprocess_menu_local_task($variables);
+}
+
+/**
+ * Preprocess variables for the workbench tabs template.
+ *
+ * @ingroup themeable
+ */
+function template_preprocess_workbench_tabs(&$variables) {
+  $element = $variables['element'];
+
+  $variables['messages'] = Drupal::service('renderer')->render($element['messages']);
+  $variables['tabs'] = Drupal::service('renderer')->render($element['tabs']);
+
+  $variables['has_messages'] = !empty($variables['messages']);
+  $variables['has_tabs'] = !empty($element['tabs']['#primary']);
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function workbench_tabs_page_top(array &$page_top) {
+  $account = \Drupal::currentUser();
+
+  $page_top['workbench_tabs'] = [
+    '#theme' => 'workbench_tabs',
+    '#access' => $account->hasPermission('use workbench_tabs'),
+  ];
+
+  $page_top['workbench_tabs']['messages'] = [
+    '#type' => 'workbench_tabs_status_messages',
+    '#cache' => [
+      'contexts' => [
+        'url.path',
+        'user.roles',
+      ],
+    ],
+  ];
+
+  $page_top['workbench_tabs']['tabs'] = [
+    '#type' => 'workbench_tabs_local_tasks',
+  ];
+}

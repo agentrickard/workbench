@@ -1,2 +1,3 @@
 access workbench:
   title: 'Access My Workbench'
+  description: 'Users with this permission will see titles of unpublished content in the default "All Recent Content" listing.'

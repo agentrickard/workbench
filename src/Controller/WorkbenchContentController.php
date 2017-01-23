@@ -66,7 +66,7 @@ class WorkbenchContentController extends NodeController {
     // Allow other modules to alter the default page.
     \Drupal::moduleHandler()->alter('workbench_content', $blocks);
 
-    $output = '';
+    $output = [];
     // ViewsBlock instance variables.
     $config = array();
     $definition = array();
@@ -91,11 +91,13 @@ class WorkbenchContentController extends NodeController {
       else {
         $build['#attributes'] = array_merge_recursive($build['#attributes'], $block['#attributes']);
       }
-      $output .= drupal_render($build);
+      $output[] = $build;
     }
 
     return array(
-      '#markup'   => '<div class="admin my-workbench">' . $output . '</div>',
+      'blocks'    => $output,
+      '#prefix'   => '<div class="admin my-workbench">',
+      '#suffix'   => '</div>',
       '#attached' => array(
         'library' => array('workbench/workbench.content'),
       ),

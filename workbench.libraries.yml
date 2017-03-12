@@ -13,3 +13,8 @@ workbench.toolbar:
   css:
     theme:
       css/workbench.toolbar.css: {}
+workbench.views:
+  version: VERSION
+  css:
+    theme:
+      css/workbench.views.css: {}

@@ -6,44 +6,48 @@
  */
 
 use Drupal\Core\Url;
-use \Drupal\Core\Menu\MenuTreeParameters;
+use Drupal\Core\Menu\MenuTreeParameters;
 
 /**
  * Implements hook_toolbar().
  */
 function workbench_toolbar() {
   // The 'Workbench' tab is a simple link, with no corresponding tray.
-  $items['workbench'] = array(
-    '#type' => 'toolbar_item',
-    'tab' => array(
-      '#type' => 'link',
-      '#title' => t('Workbench'),
-      '#url' => Url::fromRoute('workbench.content'),
-      '#attributes' => array(
-        'title' => t('My personal editorial workspace'),
-        'class' => array('toolbar-icon', 'toolbar-icon-workbench-content-tab'),
-      ),
-    ),
-    'tray' => array(
-      '#heading' => t('Your Workbench'),
-      'workbench_toolbar' => array(
-        '#pre_render' => array(
-          'workbench_toolbar_prerender_tray',
+  $user = \Drupal::currentUser();
+
+  $items = [];
+  if ($user->hasPermission('access my workbench')) {
+    $items['workbench'] = array(
+      '#type' => 'toolbar_item',
+      'tab' => array(
+        '#type' => 'link',
+        '#title' => t('Workbench'),
+        '#url' => Url::fromRoute('workbench.content'),
+        '#attributes' => array(
+          'title' => t('My personal editorial workspace'),
+          'class' => array('toolbar-icon', 'toolbar-icon-workbench-content-tab'),
         ),
       ),
-      '#type' => 'container',
-      '#attributes' => array(
-        'class' => array('toolbar-menu-administration'),
+      'tray' => array(
+        '#heading' => t('Your Workbench'),
+        'workbench_toolbar' => array(
+          '#pre_render' => array(
+            'workbench_toolbar_prerender_tray',
+          ),
+        ),
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('toolbar-menu-administration'),
+        ),
       ),
-    ),
-    '#attached' => array(
-      'library' => array(
-        'workbench/workbench.toolbar',
+      '#attached' => array(
+        'library' => array(
+          'workbench/workbench.toolbar',
+        ),
       ),
-    ),
-    '#weight' => -18,
-  );
-
+      '#weight' => -18,
+    );
+  }
   return $items;
 }
 

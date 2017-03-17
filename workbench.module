@@ -16,7 +16,7 @@ function workbench_toolbar() {
   $user = \Drupal::currentUser();
 
   $items = [];
-  if ($user->hasPermission('access my workbench')) {
+  if ($user->hasPermission('access workbench')) {
     $items['workbench'] = array(
       '#type' => 'toolbar_item',
       'tab' => array(

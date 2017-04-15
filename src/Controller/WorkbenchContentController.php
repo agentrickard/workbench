@@ -72,7 +72,7 @@ class WorkbenchContentController extends NodeController {
     $definition = array();
     $definition['provider'] = 'views';
     $views_executable = \Drupal::service('views.executable');
-    $view_storage = $this->entityManager()->getStorage('view');
+    $view_storage = $this->entityTypeManager()->getStorage('view');
     $user = $this->currentUser();
 
     foreach ($blocks as $key => $block) {

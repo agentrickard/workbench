@@ -41,35 +41,35 @@ class WorkbenchContentController extends NodeController {
    *    A Render API array of content creation options.
    */
   public function content() {
-    $blocks = array();
+    $blocks = [];
     // This left column is given a width of 35% by workbench.myworkbench.css.
-    $blocks['workbench_current_user'] = array(
+    $blocks['workbench_current_user'] = [
       '#title'        => t('My Profile'),
       '#view_id'      => 'workbench_current_user',
       '#view_display' => 'block_1',
-      '#attributes'   => array('class' => array('workbench-left')),
-    );
+      '#attributes'   => ['class' => ['workbench-left']],
+    ];
     // This right column is given a width of 65% by workbench.myworkbench.css.
-    $blocks['workbench_edited'] = array(
+    $blocks['workbench_edited'] = [
       '#view_id'      => 'workbench_edited',
       '#view_display' => 'block_1',
-      '#attributes'   => array('class' => array('workbench-right')),
-    );
-    $blocks['workbench_recent_content'] = array(
+      '#attributes'   => ['class' => ['workbench-right']],
+    ];
+    $blocks['workbench_recent_content'] = [
       '#view_id'      => 'workbench_recent_content',
       '#view_display' => 'block_1',
-      '#attributes'   => array(
-        'class' => array('workbench-full', 'workbench-spacer'),
-      ),
-    );
+      '#attributes'   => [
+        'class' => ['workbench-full', 'workbench-spacer'],
+      ],
+    ];
 
     // Allow other modules to alter the default page.
     \Drupal::moduleHandler()->alter('workbench_content', $blocks);
 
     $output = [];
     // ViewsBlock instance variables.
-    $config = array();
-    $definition = array();
+    $config = [];
+    $definition = [];
     $definition['provider'] = 'views';
     $views_executable = \Drupal::service('views.executable');
     $view_storage = $this->entityTypeManager()->getStorage('view');
@@ -94,14 +94,14 @@ class WorkbenchContentController extends NodeController {
       $output[] = $build;
     }
 
-    return array(
+    return [
       'blocks'    => $output,
       '#prefix'   => '<div class="admin my-workbench">',
       '#suffix'   => '</div>',
-      '#attached' => array(
-        'library' => array('workbench/workbench.content'),
-      ),
-    );
+      '#attached' => [
+        'library' => ['workbench/workbench.content'],
+      ],
+    ];
   }
 
 }

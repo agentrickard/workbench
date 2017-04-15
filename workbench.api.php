@@ -61,10 +61,10 @@ function hook_workbench_block() {
   // Add editing information to this page (if it's a node).
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     if ($node->entityTypeId == 'node' && $node->access('update')) {
-      return array(t('My Module: <em>You may edit this content.</em>'));
+      return [t('My Module: <em>You may edit this content.</em>')];
     }
     else {
-      return array(t('My Module: <em>You may not edit this content.</em>'));
+      return [t('My Module: <em>You may not edit this content.</em>')];
     }
   }
 }

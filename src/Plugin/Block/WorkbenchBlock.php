@@ -22,14 +22,14 @@ class WorkbenchBlock extends BlockBase {
   public function build() {
     $items = \Drupal::moduleHandler()->invokeAll('workbench_block');
     if (empty($items)) {
-      return array();
+      return [];
     }
-    return array(
+    return [
       '#markup' => '<div class="workbench-info-block">' . implode('<br />', $items) . '</div>',
-      '#attached' => array(
-        'library' => array('workbench/workbench.block'),
-      ),
-    );
+      '#attached' => [
+        'library' => ['workbench/workbench.block'],
+      ],
+    ];
   }
 
   /**

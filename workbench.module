@@ -17,36 +17,36 @@ function workbench_toolbar() {
 
   $items = [];
   if ($user->hasPermission('access workbench')) {
-    $items['workbench'] = array(
+    $items['workbench'] = [
       '#type' => 'toolbar_item',
-      'tab' => array(
+      'tab' => [
         '#type' => 'link',
         '#title' => t('Workbench'),
         '#url' => Url::fromRoute('workbench.content'),
-        '#attributes' => array(
+        '#attributes' => [
           'title' => t('My personal editorial workspace'),
-          'class' => array('toolbar-icon', 'toolbar-icon-workbench-content-tab'),
-        ),
-      ),
-      'tray' => array(
+          'class' => ['toolbar-icon', 'toolbar-icon-workbench-content-tab'],
+        ],
+      ],
+      'tray' => [
         '#heading' => t('Your Workbench'),
-        'workbench_toolbar' => array(
-          '#pre_render' => array(
+        'workbench_toolbar' => [
+          '#pre_render' => [
             'workbench_toolbar_prerender_tray',
-          ),
-        ),
+          ],
+        ],
         '#type' => 'container',
-        '#attributes' => array(
-          'class' => array('toolbar-menu-administration'),
-        ),
-      ),
-      '#attached' => array(
-        'library' => array(
+        '#attributes' => [
+          'class' => ['toolbar-menu-administration'],
+        ],
+      ],
+      '#attached' => [
+        'library' => [
           'workbench/workbench.toolbar',
-        ),
-      ),
+        ],
+      ],
       '#weight' => -18,
-    );
+    ];
   }
   return $items;
 }
@@ -71,11 +71,11 @@ function workbench_toolbar_prerender_tray(array $element) {
 
   $tree = $menu_tree->load('workbench', $parameters);
 
-  $manipulators = array(
-    array('callable' => 'menu.default_tree_manipulators:checkAccess'),
-    array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
-    array('callable' => 'toolbar_menu_navigation_links'),
-  );
+  $manipulators = [
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+    ['callable' => 'toolbar_menu_navigation_links'],
+  ];
 
   $tree = $menu_tree->transform($tree, $manipulators);
 

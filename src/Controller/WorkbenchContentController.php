@@ -5,6 +5,7 @@ namespace Drupal\workbench\Controller;
 use Drupal\node\Controller\NodeController;
 use Drupal\views\Views;
 use Drupal\views\Plugin\Block\ViewsBlock;
+use Drupal\views\Plugin\views\display\Embed;
 
 /**
  * Class WorkbenchContentController.
@@ -64,7 +65,8 @@ class WorkbenchContentController extends NodeController {
     ];
 
     // Allow other modules to alter the default page.
-    \Drupal::moduleHandler()->alter('workbench_content', $blocks);
+    $context = 'overview';
+    \Drupal::moduleHandler()->alter('workbench_content', $blocks, $context);
 
     return $this->renderBlocks($blocks);
   }
@@ -84,14 +86,15 @@ class WorkbenchContentController extends NodeController {
     $blocks = [];
     $blocks['workbench_edited_content'] = [
       '#view_id'      => 'workbench_edited',
-      '#view_display' => 'block_2',
+      '#view_display' => 'embed_1',
       '#attributes'   => [
         'class' => ['workbench-full'],
       ],
     ];
 
     // Allow other modules to alter the default page.
-    \Drupal::moduleHandler()->alter('workbench_content', $blocks);
+    $context = 'edits';
+    \Drupal::moduleHandler()->alter('workbench_content', $blocks, $context);
 
     return $this->renderBlocks($blocks);
   }
@@ -111,15 +114,16 @@ class WorkbenchContentController extends NodeController {
     $blocks = [];
     $blocks['workbench_recent_content'] = [
       '#view_id'      => 'workbench_recent_content',
-      '#view_display' => 'block_2',
+      '#view_display' => 'embed_1',
+      '#render' => 'embed',
       '#attributes'   => [
         'class' => ['workbench-full'],
       ],
     ];
 
     // Allow other modules to alter the default page.
-    \Drupal::moduleHandler()->alter('workbench_content', $blocks);
-
+    $context = 'all';
+    \Drupal::moduleHandler()->alter('workbench_content', $blocks, $context);
     return $this->renderBlocks($blocks);
   }
 
@@ -133,14 +137,7 @@ class WorkbenchContentController extends NodeController {
    */
   public function renderBlocks($blocks) {
     $output = [];
-    // ViewsBlock instance variables.
-    $config = [];
-    $definition = [];
-    $definition['provider'] = 'views';
-    $views_executable = \Drupal::service('views.executable');
-    $view_storage = $this->entityTypeManager()->getStorage('view');
-    $user = $this->currentUser();
-
+    // Render each block element.
     foreach ($blocks as $key => $block) {
       if (!Views::getView($block['#view_id'])) {
         continue;
@@ -148,9 +145,9 @@ class WorkbenchContentController extends NodeController {
       $view_id = $block['#view_id'];
       $display_id = $block['#view_display'];
 
-      $block_id = "views_block:{$view_id}-{$display_id}";
-      $plugin = new ViewsBlock($config, $block_id, $definition, $views_executable, $view_storage, $user);
-      $build = $plugin->build();
+      // Create a view embed for this content.
+      $build = views_embed_view($view_id, $display_id);
+
       if (!isset($build['#attributes'])) {
         $build['#attributes'] = $block['#attributes'];
       }

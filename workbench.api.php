@@ -18,10 +18,12 @@
  *
  * @param array $output
  *   A Render API array of content items, passed by reference.
+ * @param $context
+ *   A string context for the request, defaults to overview|edits|all.
  *
  * @see workbench_content()
  */
-function hook_workbench_content_alter(&$output) {
+function hook_workbench_content_alter(&$output, $context = NULL) {
   // Replace the default "Recent Content" view with our custom View.
   $output['workbench_recent_content']['#view_id'] = 'custom_view';
   $output['workbench_recent_content']['#view_display'] = 'block_2';

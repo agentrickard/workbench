@@ -730,7 +730,7 @@ display:
         groups:
           1: AND
       use_ajax: false
-      link_url: /admin/workbench/content/edited
+      link_url: /admin
       link_display: custom_url
     cache_metadata:
       max-age: 0
@@ -751,10 +751,26 @@ display:
     display_options:
       display_extenders: {  }
       pager:
-        type: some
+        type: full
         options:
           items_per_page: 5
           offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       defaults:
         pager: false
         header: false
@@ -766,6 +782,7 @@ display:
         use_more_text: false
         link_display: true
         link_url: true
+        use_ajax: false
       header:
         area:
           id: area
@@ -862,10 +879,12 @@ display:
         groups:
           1: AND
       footer: {  }
-      use_more: true
+      use_more: false
       use_more_always: false
       use_more_text: 'view all'
+      link_display: /admin/workbench/content/edited
       display_description: 'The five most recent edits by this user'
+      use_ajax: true
     cache_metadata:
       max-age: 0
       contexts:
@@ -876,14 +895,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  block_2:
-    display_plugin: block
-    id: block_2
-    display_title: 'List block'
+  embed_1:
+    display_plugin: embed
+    id: embed_1
+    display_title: 'Page Embed'
     position: 3
     display_options:
       display_extenders: {  }
-      display_description: 'Displays the full, paginated list of edits'
+      display_description: 'The embedded view for use on a landing page'
     cache_metadata:
       max-age: 0
       contexts:

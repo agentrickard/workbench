@@ -113,3 +113,9 @@ Workbench Media is enabled, the Media item is added to this list as well.
 
 Click the type of content you want to add, then follow the usual procedure for
 adding content.
+
+Credits
+-------
+Icons created by iconmonstr and used under license.
+
+https://iconmonstr.com/license/

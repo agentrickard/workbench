@@ -1,3 +1,10 @@
+workbench.admin:
+  path: '/admin/config/workflow/workbench'
+  defaults:
+    _title: 'Workbench settings'
+    _form: '\Drupal\workbench\Form\WorkbenchSettingsForm'
+  requirements:
+    _permission: 'administer workbench'
 workbench.content:
   path: '/admin/workbench'
   defaults:

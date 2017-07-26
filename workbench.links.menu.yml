@@ -1,3 +1,9 @@
+workbench.admin:
+  title: Workbench
+  route_name: workbench.admin
+  parent: system.admin_config_workflow
+  description: 'Workbench configuration'
+  weight: 0
 workbench.content:
   title: 'My Workbench'
   route_name: workbench.content

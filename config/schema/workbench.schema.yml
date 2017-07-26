@@ -1,0 +1,19 @@
+workbench.settings:
+  type: config_object
+  label: 'Workbench settings'
+  mapping:
+    overview_left:
+      type: text
+      label: 'Overview block left.'
+    overview_right:
+      type: text
+      label: 'Overview block right.'
+    overview_main:
+      type: text
+      label: 'Overview block main.'
+    edits_main:
+      type: text
+      label: 'My edits main.'
+    all_main:
+      type: text
+      label: 'All content main.'

@@ -66,6 +66,72 @@ class WorkbenchContentController extends NodeController {
     // Allow other modules to alter the default page.
     \Drupal::moduleHandler()->alter('workbench_content', $blocks);
 
+    return $this->renderBlocks($blocks);
+  }
+
+  /**
+   * Page callback for the workbench content page.
+   *
+   * Note that we add Views information to the array and render
+   * the Views as part of the alter hook provided here.
+   *
+   * @see hook_workbench_content_alter()
+   *
+   * @return array
+   *    A Render API array of content creation options.
+   */
+  public function editedContent() {
+    $blocks = [];
+    $blocks['workbench_edited_content'] = [
+      '#view_id'      => 'workbench_edited',
+      '#view_display' => 'block_2',
+      '#attributes'   => [
+        'class' => ['workbench-full'],
+      ],
+    ];
+
+    // Allow other modules to alter the default page.
+    \Drupal::moduleHandler()->alter('workbench_content', $blocks);
+
+    return $this->renderBlocks($blocks);
+  }
+
+  /**
+   * Page callback for the workbench content page.
+   *
+   * Note that we add Views information to the array and render
+   * the Views as part of the alter hook provided here.
+   *
+   * @see hook_workbench_content_alter()
+   *
+   * @return array
+   *    A Render API array of content creation options.
+   */
+  public function allContent() {
+    $blocks = [];
+    $blocks['workbench_recent_content'] = [
+      '#view_id'      => 'workbench_recent_content',
+      '#view_display' => 'block_2',
+      '#attributes'   => [
+        'class' => ['workbench-full'],
+      ],
+    ];
+
+    // Allow other modules to alter the default page.
+    \Drupal::moduleHandler()->alter('workbench_content', $blocks);
+
+    return $this->renderBlocks($blocks);
+  }
+
+  /**
+   * Render the registered blocks as output.
+   *
+   * @param $blocks
+   *   An array of block items formatted for rendering a view.
+   *
+   * @see hook_workbench_content_alter()
+   */
+  public function renderBlocks($blocks) {
     $output = [];
     // ViewsBlock instance variables.
     $config = [];

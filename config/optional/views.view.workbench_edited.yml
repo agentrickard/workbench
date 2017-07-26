@@ -582,7 +582,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: true
           expose:
@@ -730,8 +730,8 @@ display:
         groups:
           1: AND
       use_ajax: false
-      link_url: ''
-      link_display: page_1
+      link_url: /admin/workbench/content/edited
+      link_display: custom_url
     cache_metadata:
       max-age: 0
       contexts:
@@ -746,7 +746,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Overview block'
     position: 2
     display_options:
       display_extenders: {  }
@@ -764,6 +764,8 @@ display:
         use_more: false
         use_more_always: false
         use_more_text: false
+        link_display: true
+        link_url: true
       header:
         area:
           id: area
@@ -863,6 +865,7 @@ display:
       use_more: true
       use_more_always: false
       use_more_text: 'view all'
+      display_description: 'The five most recent edits by this user'
     cache_metadata:
       max-age: 0
       contexts:
@@ -873,23 +876,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: Page
-    position: 1
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'List block'
+    position: 3
     display_options:
       display_extenders: {  }
-      path: admin/workbench/content/edited
-      menu:
-        type: none
-        title: 'My edits'
-        description: ''
-        expanded: false
-        parent: workbench.content
-        weight: 1
-        context: '0'
-        menu_name: admin
+      display_description: 'Displays the full, paginated list of edits'
     cache_metadata:
       max-age: 0
       contexts:

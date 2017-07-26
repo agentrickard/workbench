@@ -605,7 +605,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: true
           expose:
@@ -731,6 +731,8 @@ display:
         operator: AND
         groups:
           1: AND
+      link_url: /admin/workbench/content/all
+      link_display: custom_url
     cache_metadata:
       max-age: 0
       contexts:
@@ -745,7 +747,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Overview block'
     position: 2
     display_options:
       display_extenders: {  }
@@ -765,7 +767,7 @@ display:
         options:
           items_per_page: 10
           offset: 0
-      display_description: ''
+      display_description: 'The ten most recent posts to the site'
       filters:
         status:
           id: status
@@ -775,7 +777,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1150,23 +1152,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: Page
-    position: 1
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'List block'
+    position: 3
     display_options:
       display_extenders: {  }
-      path: admin/workbench/content/all
-      menu:
-        type: tab
-        title: 'All recent content'
-        description: ''
-        expanded: false
-        parent: workbench.content
-        weight: 2
-        context: '0'
-        menu_name: admin
+      display_description: 'Displays the full, paginated list of content'
     cache_metadata:
       max-age: 0
       contexts:

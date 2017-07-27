@@ -51,6 +51,8 @@ Workbench Permissions
 * Access My Workbench
   For any user role who may access their own workbench a.k.a My Workbench
 
+* Administer Workbench
+  For administrators to change the Views displayed in Workbench.
 
 A typical permission setup so that a user can take advantage of Workbench
 looks like so:
@@ -113,6 +115,21 @@ Workbench Media is enabled, the Media item is added to this list as well.
 
 Click the type of content you want to add, then follow the usual procedure for
 adding content.
+
+Workbench content
+-----------------
+
+Administrators also have access to the configuration tab and page.
+
+By default, the module ships with 4 main pages and 3 Views. You can configure
+which page elements are displayed at /admin/config/workflow/workbench.
+
+The admin page lets you assign Views to the 5 fundamental areas of Workbench.
+
+Note that the Create content tab is not a View and is not configurable.
+
+If you wish to override the display in code, you may do so. See workbench.api.php
+for details.
 
 Credits
 -------

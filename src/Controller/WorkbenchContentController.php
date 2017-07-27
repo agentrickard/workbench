@@ -46,7 +46,6 @@ class WorkbenchContentController extends NodeController {
     $settings = $this->getSettings();
     // This left column is given a width of 35% by workbench.myworkbench.css.
     $blocks['workbench_current_user'] = [
-      '#title'        => t('My Profile'),
       '#view_id'      => $settings['overview_left']['view_id'],
       '#view_display' => $settings['overview_left']['display_id'],
       '#attributes'   => ['class' => ['workbench-left']],
@@ -141,15 +140,16 @@ class WorkbenchContentController extends NodeController {
     $output = [];
     // Render each block element.
     foreach ($blocks as $key => $block) {
-      if (!Views::getView($block['#view_id'])) {
-        continue;
+      if (empty($block['#view_id']) || !Views::getView($block['#view_id'])) {
+        $build = $block;
       }
-      $view_id = $block['#view_id'];
-      $display_id = $block['#view_display'];
+      else {
+        $view_id = $block['#view_id'];
+        $display_id = $block['#view_display'];
 
-      // Create a view embed for this content.
-      $build = views_embed_view($view_id, $display_id);
-
+        // Create a view embed for this content.
+        $build = views_embed_view($view_id, $display_id);
+      }
       if (!isset($build['#attributes'])) {
         $build['#attributes'] = $block['#attributes'];
       }

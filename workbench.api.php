@@ -16,6 +16,12 @@
  * The left and right columns in this output are given widths of 35% and 65%
  * respectively by workbench.my-workbench.css.
  *
+ * Workbench assumes that all elements on the page are Views, keyed by the
+ * '#view_id' and '#view_display' elements of the $output array.
+ *
+ * If you wish to substitute another renderable element, you may do so by
+ * unsetting those paramaters and providing a render array of your own.
+ *
  * @param array $output
  *   A Render API array of content items, passed by reference.
  * @param $context
@@ -27,6 +33,11 @@ function hook_workbench_content_alter(&$output, $context = NULL) {
   // Replace the default "Recent Content" view with our custom View.
   $output['workbench_recent_content']['#view_id'] = 'custom_view';
   $output['workbench_recent_content']['#view_display'] = 'block_2';
+
+  // Replace the 'workbench_current_user' view entirely.
+  $output['workbench_current_user'] = [
+    '#markup' => $this->t('Welcome to Fantasy Island!');
+  ]
 }
 
 /**

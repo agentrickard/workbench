@@ -25,3 +25,17 @@ function workbench_update_8001(&$sandbox) {
   $config->set('locked', TRUE);
   $config->save(TRUE);
 }
+
+/**
+ * Add the new settings for Workbench.
+ */
+function workbench_update_8002(&$sandbox) {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('workbench.settings');
+  $config->set('overview_left', 'workbench_current_user:block_1');
+  $config->set('overview_right', 'workbench_edited:block_1');
+  $config->set('overview_main', 'workbench_recent_content:block_1');
+  $config->set('edits_main', 'workbench_edited:embed_1');
+  $config->set('all_main', 'workbench_recent_content:embed_1');
+  $config->save(TRUE);
+}

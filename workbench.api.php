@@ -16,15 +16,33 @@
  * The left and right columns in this output are given widths of 35% and 65%
  * respectively by workbench.my-workbench.css.
  *
+ * Workbench assumes that all elements on the page are Views, keyed by the
+ * '#view_id' and '#view_display' elements of the $output array.
+ *
+ * If you wish to substitute another renderable element, you may do so by
+ * unsetting those paramaters and providing a render array of your own.
+ *
  * @param array $output
  *   A Render API array of content items, passed by reference.
+ * @param $context
+ *   A string context for the request, defaults to overview|edits|all.
  *
- * @see workbench_content()
+ * @return array
+ *   A renderable array or an array keyed with a #view_id and #view_display
+ *   to indicate which View display to load onto the page.
+ *
+ * @see WorkbenchContentController::renderBlocks()
  */
-function hook_workbench_content_alter(&$output) {
+function hook_workbench_content_alter(&$output, $context = NULL) {
   // Replace the default "Recent Content" view with our custom View.
   $output['workbench_recent_content']['#view_id'] = 'custom_view';
   $output['workbench_recent_content']['#view_display'] = 'block_2';
+
+  // Replace the 'workbench_current_user' view entirely.
+  $output['workbench_current_user'] = [
+    '#type' => 'markup',
+    '#markup' => $this->t('Welcome to Fantasy Island!');
+  ]
 }
 
 /**
@@ -37,7 +55,7 @@ function hook_workbench_content_alter(&$output) {
  * @param array $output
  *   A Render API array of content items, passed by reference.
  *
- * @see workbench_create()
+ * @see WorkbenchContentController::addPage()
  */
 function hook_workbench_create_alter(&$output) {
   if (\Drupal::currentUser()->hasPermission('use workbench_media add form')) {
@@ -55,7 +73,7 @@ function hook_workbench_create_alter(&$output) {
  *   An array of message strings to print. The preferred format
  *   is a one line string in the format Title: <em>Message</em>.
  *
- * @see workbench_block_view()
+ * @see WorkbenchBlock::build()
  */
 function hook_workbench_block() {
   // Add editing information to this page (if it's a node).

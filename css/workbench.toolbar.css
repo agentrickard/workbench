@@ -9,50 +9,59 @@
  * Toolbar item: Workbench
  */
 a.toolbar-icon-workbench-content-tab::before {
-  background-image: url("../images/icons/bebebe/workbench.svg");
+  background-image: url("../images/icons/bebebe/iconmonstr-tools-9.svg");
 }
 a.toolbar-icon-workbench-content-tab.is-active::before,
 .toolbar-icon-workbench-content.is-active::before {
-  background-image: url("../images/icons/ffffff/workbench.svg");
+  background-image: url("../images/icons/ffffff/iconmonstr-tools-9.svg");
 }
 
 /**
  * Tray item: My Workbench
  */
 .toolbar-icon-workbench-content::before {
-  background-image: url("../images/icons/787878/workbench.svg");
+  background-image: url("../images/icons/787878/iconmonstr-task-1.svg");
 }
-.toolbar-icon-workbench-content.is-active::before,
 .toolbar-icon-workbench-content.is-active::before {
-  background-image: url("../images/icons/000000/workbench.svg");
+  background-image: url("../images/icons/000000/iconmonstr-task-1.svg");
 }
 
 /**
  * Tray item: Create Content
  */
 .toolbar-icon-workbench-create-content::before {
-  background-image: url("../images/icons/787878/workbench.svg");
+  background-image: url("../images/icons/787878/iconmonstr-note-29.svg");
 }
 .toolbar-icon-workbench-create-content.is-active::before {
-  background-image: url("../images/icons/000000/workbench.svg");
+  background-image: url("../images/icons/000000/iconmonstr-note-29.svg");
 }
 
 /**
  * Tray item: My Edits
  */
 .toolbar-icon-workbench-my-edited::before {
-  background-image: url("../images/icons/787878/workbench.svg");
+  background-image: url("../images/icons/787878/iconmonstr-edit-3.svg");
 }
 .toolbar-icon-workbench-my-edited.is-active::before {
-  background-image: url("../images/icons/000000/workbench.svg");
+  background-image: url("../images/icons/000000/iconmonstr-edit-3.svg");
 }
 
 /**
  * Tray item: All Recent Content
  */
 .toolbar-icon-workbench-all-content::before {
-  background-image: url("../images/icons/787878/workbench.svg");
+  background-image: url("../images/icons/787878/iconmonstr-note-20.svg");
 }
 .toolbar-icon-workbench-all-content.is-active::before {
-  background-image: url("../images/icons/000000/workbench.svg");
+  background-image: url("../images/icons/000000/iconmonstr-note-20.svg");
+}
+
+/**
+ * Tray item: Configure
+ */
+.toolbar-icon-workbench-configure::before {
+  background-image: url("../images/icons/787878/iconmonstr-gear-2.svg");
+}
+.toolbar-icon-workbench-configure.is-active::before {
+  background-image: url("../images/icons/000000/iconmonstr-gear-2.svg");
 }

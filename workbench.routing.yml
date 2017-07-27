@@ -1,3 +1,10 @@
+workbench.admin:
+  path: '/admin/config/workflow/workbench'
+  defaults:
+    _title: 'Workbench settings'
+    _form: '\Drupal\workbench\Form\WorkbenchSettingsForm'
+  requirements:
+    _permission: 'administer workbench'
 workbench.content:
   path: '/admin/workbench'
   defaults:
@@ -16,9 +23,17 @@ workbench.create_content:
     _node_add_access: 'node'
 workbench.my_edited:
   path: '/admin/workbench/content/edited'
+  defaults:
+    _controller: '\Drupal\workbench\Controller\WorkbenchContentController::editedContent'
+    _title: 'My edits'
+    _description: 'A searchable list of content you have edited'
   requirements:
     _permission: 'access workbench'
 workbench.all_content:
   path: '/admin/workbench/content/all'
+  defaults:
+    _controller: '\Drupal\workbench\Controller\WorkbenchContentController::allContent'
+    _title: 'All recent content'
+    _description: 'A sortable list of all recent content'
   requirements:
     _permission: 'access workbench'

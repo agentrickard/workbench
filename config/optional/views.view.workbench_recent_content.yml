@@ -1,8 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - core.entity_view_mode.node.teaser
   module:
     - node
     - user
@@ -131,9 +129,7 @@ display:
           default: changed
           empty_table: false
       row:
-        type: 'entity:node'
-        options:
-          view_mode: teaser
+        type: fields
       fields:
         title:
           id: title
@@ -605,7 +601,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: true
           expose:
@@ -731,6 +727,11 @@ display:
         operator: AND
         groups:
           1: AND
+      link_url: /admin/workbench/content/all
+      link_display: '0'
+      use_more: false
+      use_more_always: false
+      use_more_text: 'view all'
     cache_metadata:
       max-age: 0
       contexts:
@@ -745,7 +746,7 @@ display:
   block_1:
     display_plugin: block
     id: block_1
-    display_title: Block
+    display_title: 'Overview block'
     position: 2
     display_options:
       display_extenders: {  }
@@ -756,16 +757,33 @@ display:
         fields: false
         filters: false
         filter_groups: false
-        use_more: false
-        use_more_always: false
-        use_more_text: false
+        use_more: true
+        use_more_always: true
+        use_more_text: true
         header: false
+        use_ajax: false
       pager:
-        type: some
+        type: full
         options:
           items_per_page: 10
           offset: 0
-      display_description: ''
+          id: 2
+          total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      display_description: 'The ten most recent posts to the site'
       filters:
         status:
           id: status
@@ -775,7 +793,7 @@ display:
           group_type: group
           admin_label: ''
           operator: '='
-          value: true
+          value: '1'
           group: 1
           exposed: false
           expose:
@@ -1124,9 +1142,7 @@ display:
           text: edit
           entity_type: node
           plugin_id: entity_link_edit
-      use_more: true
-      use_more_always: false
-      use_more_text: 'view all'
+      link_display: /admin/workbench/content/all
       header:
         area:
           id: area
@@ -1141,6 +1157,7 @@ display:
             value: '<h3>Recent content</h3>'
             format: basic_html
           plugin_id: text
+      use_ajax: true
     cache_metadata:
       max-age: 0
       contexts:
@@ -1150,23 +1167,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
-  page_1:
-    display_plugin: page
-    id: page_1
-    display_title: Page
-    position: 1
+  embed_1:
+    display_plugin: embed
+    id: embed_1
+    display_title: 'Page Embed'
+    position: 3
     display_options:
       display_extenders: {  }
-      path: admin/workbench/content/all
-      menu:
-        type: tab
-        title: 'All recent content'
-        description: ''
-        expanded: false
-        parent: workbench.content
-        weight: 2
-        context: '0'
-        menu_name: admin
+      display_description: 'The embedded view for use on a landing page'
     cache_metadata:
       max-age: 0
       contexts:

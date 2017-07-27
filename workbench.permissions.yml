@@ -1,2 +1,4 @@
 access workbench:
   title: 'Access My Workbench'
+administer workbench:
+  title: 'Administer Workbench content settings'

@@ -24,3 +24,9 @@ workbench.all_content:
   title: 'All recent content'
   weight: 10
   menu_name: workbench
+workbench.configure:
+  title: Configure
+  route_name: workbench.admin
+  menu_name: workbench
+  description: 'Workbench configuration'
+  weight: 20

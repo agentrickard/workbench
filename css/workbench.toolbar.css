@@ -22,7 +22,6 @@ a.toolbar-icon-workbench-content-tab.is-active::before,
 .toolbar-icon-workbench-content::before {
   background-image: url("../images/icons/787878/iconmonstr-task-1.svg");
 }
-.toolbar-icon-workbench-content.is-active::before,
 .toolbar-icon-workbench-content.is-active::before {
   background-image: url("../images/icons/000000/iconmonstr-task-1.svg");
 }
@@ -55,4 +54,14 @@ a.toolbar-icon-workbench-content-tab.is-active::before,
 }
 .toolbar-icon-workbench-all-content.is-active::before {
   background-image: url("../images/icons/000000/iconmonstr-note-20.svg");
+}
+
+/**
+ * Tray item: Configure
+ */
+.toolbar-icon-workbench-configure::before {
+  background-image: url("../images/icons/787878/iconmonstr-gear-2.svg");
+}
+.toolbar-icon-workbench-configure.is-active::before {
+  background-image: url("../images/icons/000000/iconmonstr-gear-2.svg");
 }

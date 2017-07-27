@@ -731,7 +731,7 @@ display:
           1: AND
       use_ajax: false
       link_url: /admin
-      link_display: custom_url
+      link_display: '0'
     cache_metadata:
       max-age: 0
       contexts:

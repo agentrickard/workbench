@@ -126,6 +126,37 @@ which page elements are displayed at /admin/config/workflow/workbench.
 
 The admin page lets you assign Views to the 5 fundamental areas of Workbench.
 
+Those areas are as follows:
+
+```
+  Page: My Workbench
+  Path:  /admin/workbench
+  Region map:
+
+  -------------------------------------------
+  |   overview_left   |   overview.right    |
+  -------------------------------------------
+  |             overview_main               |
+  -------------------------------------------
+
+  Page: My edits
+  Path:  /admin/workbench/content/edited
+  Region map:
+
+  -------------------------------------------
+  |               edits_main                |
+  -------------------------------------------
+
+  Page: All recent content
+  Path:  /admin/workbench/content/all
+  Region map:
+
+  -------------------------------------------
+  |                all_main                 |
+  -------------------------------------------
+
+```
+
 Note that the Create content tab is not a View and is not configurable.
 
 If you wish to override the display in code, you may do so. See workbench.api.php

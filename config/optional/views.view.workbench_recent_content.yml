@@ -129,9 +129,7 @@ display:
           default: changed
           empty_table: false
       row:
-        type: 'entity:node'
-        options:
-          view_mode: teaser
+        type: fields
       fields:
         title:
           id: title

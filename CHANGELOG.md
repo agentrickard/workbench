@@ -1,3 +1,6 @@
+24-AUG-2017
+8.x-1.0 released
+
 27-JUL-2017
 8.x-1.0-beta1 released
 

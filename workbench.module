@@ -36,9 +36,6 @@ function workbench_toolbar() {
           ],
         ],
         '#type' => 'container',
-        '#attributes' => [
-          'class' => ['toolbar-menu-administration'],
-        ],
       ],
       '#attached' => [
         'library' => [

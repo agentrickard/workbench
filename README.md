@@ -109,9 +109,7 @@ Each item in the list links to the full content or you can click edit to
 start editing.
 
 Click the Create Content tab to view a list of types of content that you can
-create.  Remember, we're dealing with Entities now.  Initially, Workbench
-shows various Node Types that you have permission to create.  When
-Workbench Media is enabled, the Media item is added to this list as well.
+create.  Workbench shows various Node Types that you have permission to create.
 
 Click the type of content you want to add, then follow the usual procedure for
 adding content.

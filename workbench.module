@@ -10,8 +10,6 @@ use Drupal\Core\Menu\MenuTreeParameters;
 
 /**
  * Implements hook_help().
- *
- * @inheritdoc
  */
 function workbench_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
   switch ($route_name) {

@@ -162,8 +162,21 @@ Note that the Create content tab is not a View and is not configurable.
 If you wish to override the display in code, you may do so. See workbench.api.php
 for details.
 
+Issues
+------
+Please file issues at https://drupal.org/project/workbench.
+
+Note that issues related to other modules in the Workbench suite (including
+Workbench Access, Workbench Moderation, and Workbench Files) should be filed
+under their proper modules.
+
 Credits
 -------
 Icons created by iconmonstr and used under license.
-
 https://iconmonstr.com/license/
+
+Help Pages
+----------
+This help text page will look better with the Markdown module installed.
+https://drupal.org/project/markdown
+

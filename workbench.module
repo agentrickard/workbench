@@ -9,6 +9,30 @@ use Drupal\Core\Url;
 use Drupal\Core\Menu\MenuTreeParameters;
 
 /**
+ * Implements hook_help().
+ *
+ * @inheritdoc
+ */
+function workbench_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.workbench':
+      $text = file_get_contents(dirname(__FILE__) . '/README.md');
+      if (! \Drupal::moduleHandler()->moduleExists('markdown')) {
+        return workbench_parse_help($text);
+      }
+      else {
+        // Use the Markdown filter to render the README.
+        $filter_manager = \Drupal::service('plugin.manager.filter');
+        $settings = \Drupal::configFactory()->get('markdown.settings')->getRawData();
+        $config = ['settings' => $settings];
+        $filter = $filter_manager->createInstance('markdown', $config);
+        return $filter->process($text, 'en');
+      }
+  }
+  return NULL;
+}
+
+/**
  * Implements hook_toolbar().
  */
 function workbench_toolbar() {
@@ -78,4 +102,25 @@ function workbench_toolbar_prerender_tray(array $element) {
 
   $element['administration_menu'] = $menu_tree->build($tree);
   return $element;
+}
+
+/**
+ * Simplified display of help text without markdown module.
+ *
+ * @param $text
+ *   The help text markdown.
+ *
+ * @return HTML
+ */
+function workbench_parse_help($text) {
+  $find = "```\n\n";
+  $replace = '</pre>';
+  $text = str_replace($find, $replace, $text);
+  $find = "```";
+  $replace = '<pre>';
+  $text = str_replace($find, $replace, $text);
+  $find = ["\n"];
+  $replace = ['<br />'];
+  $text = str_replace($find, $replace, $text);
+  return $text;
 }

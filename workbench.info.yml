@@ -4,8 +4,8 @@ description: 'Provides convenient dashboards and shortcuts for editors.'
 package: Workbench
 core: 8.x
 dependencies:
-  - image
-  - node
-  - toolbar
-  - user
-  - views
+  - drupal:image
+  - drupal:node
+  - drupal:toolbar
+  - drupal:user
+  - drupal:views

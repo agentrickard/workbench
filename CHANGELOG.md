@@ -1,3 +1,6 @@
+11-SEP-2018
+8.x-1.1 released
+
 24-AUG-2017
 8.x-1.0 released
 

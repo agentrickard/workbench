@@ -41,7 +41,7 @@ function hook_workbench_content_alter(&$output, $context = NULL) {
   // Replace the 'workbench_current_user' view entirely.
   $output['workbench_current_user'] = [
     '#type' => 'markup',
-    '#markup' => $this->t('Welcome to Fantasy Island!')
+    '#markup' => t('Welcome to Fantasy Island!')
   ];
 }
 

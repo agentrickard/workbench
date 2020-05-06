@@ -9,6 +9,9 @@ namespace Drupal\workbench\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Generates the Workbench configuration form.
+ */
 class WorkbenchSettingsForm extends ConfigFormBase {
 
   /**

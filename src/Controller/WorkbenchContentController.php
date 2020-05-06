@@ -8,9 +8,7 @@ use Drupal\views\Plugin\Block\ViewsBlock;
 use Drupal\views\Plugin\views\display\Embed;
 
 /**
- * Class WorkbenchContentController.
- *
- * @package Drupal\workbench\Controller
+ * Generates the pages defined by Workbench.
  */
 class WorkbenchContentController extends NodeController {
 

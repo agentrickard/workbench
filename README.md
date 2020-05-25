@@ -13,12 +13,10 @@ easily access their own content.
 Workbench gains more features when you install and enable these modules:
 
 * Workbench Access - http://drupal.org/project/workbench_access
-* Content Moderation - part of Drupal 8.5 core
-* Workbench Moderation - http://drupal.org/project/workbench_moderation
-  (deprecated in favor of Content Moderation)
+* Content Moderation - part of Drupal core
 
-One way to think about Workbench is that it becomes the Dashboard for Content
-Contributors.  Basically, putting all of the content needs of a user in one
+One way to think about Workbench is that it becomes the Dashboard for content
+contributors.  Basically, putting all of the content needs of a user in one
 place.
 
 
@@ -161,6 +159,14 @@ Note that the Create content tab is not a View and is not configurable.
 
 If you wish to override the display in code, you may do so. See workbench.api.php
 for details.
+
+Upgrading to 8.x-1.3
+------
+The 8.x-1.3 release corrects an error in the way revisions were tracked. Updating the view in code is not feasible, so the easiest way to update is as follows:
+
+* Delete the existing View "Workbench: Edits by user" (`workbench_edited`)
+* Reimport the View configuration using the Configuration Import screen or by disabling and re-enabling the Workbench module.
+
 
 Issues
 ------

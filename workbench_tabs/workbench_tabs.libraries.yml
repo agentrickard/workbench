@@ -1,0 +1,10 @@
+workbench_tabs:
+  version: 1.x
+  css:
+    component:
+      css/workbench-tabs.css: {}
+  js:
+    js/workbench_tabs_trigger.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

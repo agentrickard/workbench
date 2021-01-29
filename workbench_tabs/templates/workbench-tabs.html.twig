@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Markup for the Workbench Tabs.
+ *
+ * Available variables:
+ * - messages: Status messages
+ * - tabs: Local task tabs
+ *
+ * @see workbench_tabs_page_top()
+ * @see template_preprocess_workbench_tabs()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if (has_messages or has_tabs) %}
+
+{{ attach_library('workbench_tabs/workbench_tabs') }}
+
+<div class="workbench-tabs toolbar">
+  {% if (messages) %}
+  <div class="workbench-tabs__message">{{ messages }}</div>
+  {% endif %}
+
+  <nav class="workbench-tabs__tabs">
+    {% if (messages) %}
+    <a href="#" class="workbench-tabs__trigger"><span class="show">Show</span> <span class="hide">Hide</span> Messages</a>
+    {% endif %}
+
+    {{ tabs }}
+  </nav>
+</div>
+
+{% endif %}
